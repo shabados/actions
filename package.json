@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Harjot1Singh/actions/issues"
   },
-  "homepage": "https://github.com/Harjot1Singh/actions#readme"
+  "homepage": "https://github.com/Harjot1Singh/actions#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-angular": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "husky": "^4.2.5"
+  }
 }
