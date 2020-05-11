@@ -4,8 +4,8 @@
   "description": "Shabad OS cross-repository actions",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "husky": "^4.2.5"
+    "husky": "^4.2.5",
+    "jest": "^26.0.1"
   }
 }
