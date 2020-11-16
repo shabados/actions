@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Shabad OS cross-repository actions",
   "main": "index.js",
-  "scripts": {
+  "scripóts": {
     "test": "jest --coverage",
     "lint": "eslint ."
   },
