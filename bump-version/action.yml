@@ -1,0 +1,14 @@
+name: 'Semantic Version Bump'
+description: 'Bumps the package.json version according to semver, with beta components, and pushes it back to the repository'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  random-number: 
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+runs:
+  using: 'node12'
+  main: 'index.js'

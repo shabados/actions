@@ -29,5 +29,9 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "husky": "^4.2.5",
     "jest": "^26.0.1"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
   }
 }
