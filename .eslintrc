@@ -2,7 +2,10 @@
   "root": true,
   "overrides": [
     {
-      "extends": ["plugin:jest/recommended", "plugin:jest/style"],
+      "extends": [
+        "plugin:jest/recommended",
+        "plugin:jest/style"
+      ],
       "files": [
         "**/test/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)",
@@ -117,7 +120,10 @@
     // Sometimes you want to declare a function as async so that it returns a Promisified value
     "@typescript-eslint/require-await": "off",
     // Use types throughout, not interfaces
-    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    "@typescript-eslint/consistent-type-definitions": [
+      "error",
+      "type"
+    ],
     // Semi colons are visual garbage
     "@typescript-eslint/semi": ["error", "never"],
     // For the few semi-colons required (e.g. inline array operations), place them at the beginning of the statement
@@ -143,6 +149,44 @@
       "error",
       {
         "newlines-between": "always"
+      }
+    ],
+    // This plugin enforces naming conventions
+    "@typescript-eslint/naming-convention": [
+      "error",
+      // For variables, properties, funtions, methods, etc.
+      {
+        "selector": ["variableLike", "memberLike"],
+        "format": ["strictCamelCase"],
+        "leadingUnderscore": "allow"
+      },
+      // For types, enums, etc.
+      {
+        "selector": ["typeLike"],
+        "format": ["StrictPascalCase"]
+      },
+      // Prefix camelCase booleans
+      {
+        "selector": "variable",
+        "types": ["boolean"],
+        "format": ["strictCamelCase"],
+        "prefix": [
+          "is",
+          "should",
+          "has",
+          "can",
+          "did",
+          "will"
+        ]
+      },
+      // Allow "true constant" bool/str/num to be UPPER_CASE
+      // Don't require prefix for UPPER_CASE boolean
+      // E.g. hardcoded string or env variable
+      {
+        "selector": "variable",
+        "modifiers": "const",
+        "types": ["boolean", "string", "number"],
+        "format": ["strictCamelCase", "UPPER_CASE"]
       }
     ]
   }
