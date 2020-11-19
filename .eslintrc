@@ -157,7 +157,7 @@
       // For variables, properties, funtions, methods, etc.
       {
         "selector": ["variableLike", "memberLike"],
-        "format": ["strictCamelCase"],
+        "format": ["strictCamelCase", "StrictPascalCase"],
         "leadingUnderscore": "allow"
       },
       // For types, enums, etc.
@@ -169,7 +169,7 @@
       {
         "selector": "variable",
         "types": ["boolean"],
-        "format": ["strictCamelCase"],
+        "format": ["StrictPascalCase"],
         "prefix": [
           "is",
           "should",
@@ -184,9 +184,12 @@
       // E.g. hardcoded string or env variable
       {
         "selector": "variable",
-        "modifiers": "const",
-        "types": ["boolean", "string", "number"],
-        "format": ["strictCamelCase", "UPPER_CASE"]
+        "modifiers": ["const"],
+        "format": [
+          "strictCamelCase",
+          "StrictPascalCase",
+          "UPPER_CASE"
+        ]
       }
     ]
   }
