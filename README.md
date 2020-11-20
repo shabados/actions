@@ -55,7 +55,7 @@ Encapsulate the following:
 
 all repo specific or should we at least call lint test:e2e test:integration test:unit seperately?
 
-### Build Proces
+### Build Process
 
 - [x] Version bump
 - [x] Build [repo-specific]
