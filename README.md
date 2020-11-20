@@ -25,9 +25,7 @@ jobs:
 
 #### bump-version
 
-Bumps the version of a repository according to the [project management release rules](https://github.com/shabados/.github/wiki/Project-Management#41-release-process).
-
-Achieves this by bumping package.json, and creating a commit, and git tag.
+Bumps the version of a repository according to the [project management release rules](https://github.com/shabados/.github/wiki/Project-Management#41-release-process) by bumping package.json, creating a commit, and tagging it with the bumped SemVer.
 
 ##### Inputs
 
