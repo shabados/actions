@@ -27,14 +27,14 @@ const commitMessages = {
  * Runs each test case.
  * Creates a fresh repo and applies the commits.
  */
-const runCase = ( next = '' ) => async ( from: string, to: string, commits: CommitType[] ) => {
+const runCase = ( prerelease = '' ) => async ( from: string, to: string, commits: CommitType[] ) => {
   // Create repo in temporary path
   const path = resolve( TMP_PATH, v4() )
   await mkdirp( path )
 
   // Set up git and action with path
   const git = SimpleGit( path )
-  setWith( { path, next } )
+  setWith( { path, prerelease } )
 
   // Initialise repository with package.json
   const packagePath = join( path, 'package.json' )
@@ -107,6 +107,8 @@ describe( 'bump-version', () => {
     ]
 
     it.each( cases )( 'should bump %s to %s, given a %p in commit history', runCase( 'true' ) )
+
+    it( 'should bump with any prerelease prefix, given a commit history', () => runCase( 'beta' )( '1.0.0', '1.0.1-beta.0', [ CommitType.fix ] ) )
   } )
 
   describe( 'from next release -> next release', () => {

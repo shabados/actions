@@ -1,6 +1,10 @@
 # Shabad OS Actions
 
-Shabad OS cross-repository actions.
+Shabad OS cross-repository GitHub actions.
+
+### Actions
+
+- [Semantic Version Bump](bump-version/): figures out and bumps version based on commit history, supporting a sensible prerelease scheme.
 
 ## Usage
 
@@ -19,30 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: shabados/actions/bump-version@release
-```
-
-### Actions
-
-#### bump-version
-
-Bumps the version of a repository according to the [project management release rules](https://github.com/shabados/.github/wiki/Project-Management#41-release-process) by bumping package.json, creating a commit, and tagging it with the bumped SemVer.
-
-##### Inputs
-
-###### `path`
-
-**Required** The path inside the repository containing the package.json to update. Default `"./"`.
-
-###### `next`
-
-**Required** If value supplied, indicate the bump will be for a next release. Default `""`.
-
-##### Example usage
-
-```yaml
-uses: shabados/actions/bump-version@release
-with:
-  next: 'true'
 ```
 
 ## Todo

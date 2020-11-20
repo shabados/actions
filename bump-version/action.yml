@@ -6,8 +6,8 @@ inputs:
     description: 'Path to package'
     required: true
     default: './'
-  next:
-    description: 'Bump to a next release. Use any string value to indiciate true.'
+  prerelease:
+    description: 'Bump to a prerelease version. Uses the string value as the prerelease id e.g. 1.0.0-<prerelease>.2. If empty, does not bump to a prerelease.'
     required: true
     default: ''
 
