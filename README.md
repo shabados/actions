@@ -1,4 +1,6 @@
-# Shabad OS Actions
+<img src="https://raw.githubusercontent.com/shabados/presenter/dev/resources/icon.png" width="128" alt="Shabad OS">
+
+# Actions
 
 Shabad OS cross-repository GitHub actions.
 
