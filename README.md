@@ -9,7 +9,7 @@ Actions are all stored in subfolders.
 ```yaml
 # example-workflow.yml
 
-name: CI
+name: Continuous Integration
 
 on: [push]
 
