@@ -1,0 +1,16 @@
+name: 'Semantic Version Bump'
+description: 'Bumps the package.json version according to semver, with beta components, and pushes it back to the repository'
+
+inputs:
+  path:
+    description: 'Path to package'
+    required: true
+    default: './'
+  next:
+    description: 'Bump to a next release. Use any string value to indiciate true.'
+    required: true
+    default: ''
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
