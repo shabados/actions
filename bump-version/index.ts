@@ -46,7 +46,7 @@ const increment = ( version: string, releaseType: ReleaseType, prereleaseId: str
   // if minor AND patch digit is 0, do prerelease, else preminor
   if ( releaseType === 'minor' ) return nextInc( version, !patch( version ) ? 'prerelease' : 'preminor' )
 
-  // If major AND patch digit is 0 AND minor digit is 0, do prelease else premajor
+  // If major AND minor AND patch digit is 0, do prelease else premajor
   if ( releaseType === 'major' ) return nextInc( version, !patch( version ) && !minor( version ) ? 'prerelease' : 'premajor' )
 
   return nextInc( version, releaseType )
