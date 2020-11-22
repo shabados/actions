@@ -1,0 +1,16 @@
+name: 'Semantic Version Bump'
+description: 'Bumps the package.json version according to semver, with beta components, and pushes it back to the repository'
+
+inputs:
+  path:
+    description: 'Path to package'
+    required: true
+    default: './'
+  prerelease:
+    description: 'Bump to a prerelease version. Uses the string value as the prerelease id e.g. 1.0.0-<prerelease>.2. If empty, does not bump to a prerelease.'
+    required: true
+    default: ''
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
