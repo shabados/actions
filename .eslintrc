@@ -2,10 +2,7 @@
   "root": true,
   "overrides": [
     {
-      "extends": [
-        "plugin:jest/recommended",
-        "plugin:jest/style"
-      ],
+      "extends": ["plugin:jest/recommended", "plugin:jest/style"],
       "files": [
         "**/test/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)",
@@ -120,10 +117,7 @@
     // Sometimes you want to declare a function as async so that it returns a Promisified value
     "@typescript-eslint/require-await": "off",
     // Use types throughout, not interfaces
-    "@typescript-eslint/consistent-type-definitions": [
-      "error",
-      "type"
-    ],
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     // Semi colons are visual garbage
     "@typescript-eslint/semi": ["error", "never"],
     // For the few semi-colons required (e.g. inline array operations), place them at the beginning of the statement
@@ -170,14 +164,7 @@
         "selector": "variable",
         "types": ["boolean"],
         "format": ["StrictPascalCase"],
-        "prefix": [
-          "is",
-          "should",
-          "has",
-          "can",
-          "did",
-          "will"
-        ]
+        "prefix": ["is", "should", "has", "can", "did", "will"]
       },
       // Allow "true constant" bool/str/num to be UPPER_CASE
       // Don't require prefix for UPPER_CASE boolean
@@ -185,11 +172,7 @@
       {
         "selector": "variable",
         "modifiers": ["const"],
-        "format": [
-          "strictCamelCase",
-          "StrictPascalCase",
-          "UPPER_CASE"
-        ]
+        "format": ["strictCamelCase", "StrictPascalCase", "UPPER_CASE"]
       }
     ]
   }
