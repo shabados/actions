@@ -3,6 +3,10 @@
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "github.vscode-pull-request-github",
-    "visualstudioexptteam.vscodeintellicode"
+    "visualstudioexptteam.vscodeintellicode",
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-emoji",
+    "bierner.markdown-preview-github-styles",
+    "xabikos.javascriptsnippets"
   ]
 }
