@@ -144,6 +144,36 @@
       {
         "newlines-between": "always"
       }
+    ],
+    // This plugin enforces naming conventions
+    "@typescript-eslint/naming-convention": [
+      "error",
+      // For variables, properties, funtions, methods, etc.
+      {
+        "selector": ["variableLike", "memberLike"],
+        "format": ["strictCamelCase", "StrictPascalCase"],
+        "leadingUnderscore": "allow"
+      },
+      // For types, enums, etc.
+      {
+        "selector": ["typeLike"],
+        "format": ["StrictPascalCase"]
+      },
+      // Prefix camelCase booleans
+      {
+        "selector": "variable",
+        "types": ["boolean"],
+        "format": ["StrictPascalCase"],
+        "prefix": ["is", "should", "has", "can", "did", "will"]
+      },
+      // Allow "true constant" bool/str/num to be UPPER_CASE
+      // Don't require prefix for UPPER_CASE boolean
+      // E.g. hardcoded string or env variable
+      {
+        "selector": "variable",
+        "modifiers": ["const"],
+        "format": ["strictCamelCase", "StrictPascalCase", "UPPER_CASE"]
+      }
     ]
   }
 }
