@@ -18,6 +18,16 @@ See the test cases to understand the bump rules, which follow SemVer, but bump f
 
 **Required** If prerelease bump is required, supply the name of the prerelease id. Leave empty if prerelease is not required. Default `""`.
 
+## Outputs
+
+### `previous`
+
+The previous semantic version.
+
+### `next`
+
+The next semantic version.
+
 ## Example usage
 
 ```yaml
