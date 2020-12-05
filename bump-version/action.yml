@@ -11,6 +11,12 @@ inputs:
     required: true
     default: ''
 
+outputs:
+  previous:
+    description: 'The previous semantic version.'
+  next:
+    description: 'The next semantic version.'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'

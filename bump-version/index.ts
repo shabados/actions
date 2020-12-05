@@ -3,7 +3,7 @@ import { join } from 'path'
 import { exec } from 'child_process'
 import { promisify } from 'util'
 
-import { getInput, setFailed, info, debug } from '@actions/core'
+import { getInput, setFailed, info, debug, setOutput } from '@actions/core'
 import { inc, minor, patch, prerelease, ReleaseType } from 'semver'
 import { readJSON } from 'fs-extra'
 
@@ -74,6 +74,9 @@ const run = async () => {
   // Run npm version [version] with custom commit message
   info( `Bumping ${current} to ${version}` )
   await asyncExec( `npm version ${version} -m "build: release v${version}"` )
+
+  setOutput( 'previous', current )
+  setOutput( 'next', version )
 }
 
 if ( require.main === module ) {
