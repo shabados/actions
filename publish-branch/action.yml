@@ -1,0 +1,21 @@
+name: 'Publish Release Branch'
+description: 'Publishes the current working directory as a release branch, using the current git tag'
+
+inputs:
+  fixed_branch:
+    description: 'If set, a fixed branch to publish to, such as gh-pages'
+    required: false
+
+  release_branch_prefix:
+    description: 'The prefix for any release branches'
+    required: true
+    default: 'release'
+
+  gitignore:
+    description: 'Contents of replacement .gitignore file, in order to commit build artifacts'
+    default: ''
+    required: false
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

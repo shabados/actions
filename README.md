@@ -18,6 +18,7 @@ Shabad OS cross-repository GitHub actions.
 ### Actions
 
 - [Semantic Version Bump](bump-version/): figures out and bumps version based on commit history, supporting a sensible prerelease scheme.
+- [Publish Branch](publish-branch/): releases the current working directory as a release branch, using the latest git tag.
 - [Publish Github](publish-github/): pushes any committed changes back to GitHub, creates a release using the latest git tag, and uploads any supplied assets to the release.
 
 ## Usage
