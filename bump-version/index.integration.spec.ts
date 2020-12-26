@@ -106,7 +106,7 @@ describe( 'bump-version', () => {
       [ '1.1.1', '2.0.0-next.0', [ CommitType.breaking ] ],
     ]
 
-    it.each( cases )( 'should bump %s to %s, given a %p in commit history', runCase( 'true' ) )
+    it.each( cases )( 'should bump %s to %s, given a %p in commit history', runCase( 'next' ) )
 
     it( 'should bump with any prerelease prefix, given a commit history', () => runCase( 'beta' )( '1.0.0', '1.0.1-beta.0', [ CommitType.fix ] ) )
   } )
@@ -123,6 +123,6 @@ describe( 'bump-version', () => {
       [ '2.0.0-next.0', '2.0.0-next.1', [ CommitType.fix ] ],
     ]
 
-    it.each( cases )( 'should bump %s to %s, given a %p in commit history', runCase( 'true' ) )
+    it.each( cases )( 'should bump %s to %s, given a %p in commit history', runCase( 'next' ) )
   } )
 } )
