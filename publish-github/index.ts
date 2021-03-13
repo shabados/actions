@@ -12,7 +12,7 @@ const run = async () => {
   // Push to main branch
   const branch = getInput( 'main_branch' )
   info( `Pushing to ${branch}` )
-  await git.push( 'origin', branch )
+  await git.push( 'origin', branch, { '--follow-tags': null } )
 
   // Get octokit instance
   const token = getInput( 'github_token' ) || process.env.GITHUB_TOKEN!
