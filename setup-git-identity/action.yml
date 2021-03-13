@@ -1,0 +1,19 @@
+name: Setup Git Identity
+description: Sets the global git user and email address
+
+inputs:
+  user:
+    description: The git user to set
+    required: true
+
+  email:
+    description: The git email to set
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - run: git config --global user.name "${{ inputs.user }}"
+      shell: bash
+    - run: git config --global user.email "${{ inputs.email }}"
+      shell: bash
