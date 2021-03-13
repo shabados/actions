@@ -1,6 +1,6 @@
 
 import { context, getOctokit } from '@actions/github'
-import glob from '@actions/glob'
+import * as glob from '@actions/glob'
 import { info } from '@actions/core'
 import { readFile } from 'fs-extra'
 
