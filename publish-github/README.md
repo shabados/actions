@@ -9,6 +9,10 @@ Create a GitHub release, including commit sync, changelog inclusion, and glob-ba
 
 ## Inputs
 
+### `github_token`
+
+**Required** The GitHub token to authenticate with. Must have push + release permissions.
+
 ### `main_branch`
 
 **Requred** The name of the main branch to push commits back to. Default `"main"`.

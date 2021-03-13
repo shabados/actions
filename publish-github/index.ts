@@ -15,7 +15,7 @@ const run = async () => {
   await git.push( 'origin', branch )
 
   // Get octokit instance
-  const token = process.env.GITHUB_TOKEN!
+  const token = getInput( 'github_token' ) || process.env.GITHUB_TOKEN!
   const octokit = getOctokit( token )
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
