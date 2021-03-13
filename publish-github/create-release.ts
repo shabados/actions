@@ -18,7 +18,7 @@ const createRelease = async ( { octokit, git }: CreateRelease ) => {
   const body = await pathExists( bodyPath ) ? await readFile( bodyPath, 'utf8' ) : ''
 
   // Get latest tag
-  const latestTag = await git.raw( 'describe', ' --abbrev=0' )
+  const latestTag = ( await ( git.raw( 'describe', '--abbrev=0' ) ) ).trim()
 
   // Create GitHub release using latest tag
   info( `Creating GitHub release for ${latestTag}` )
