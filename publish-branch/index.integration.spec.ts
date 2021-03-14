@@ -20,7 +20,6 @@ const runCase = (
   expectedBranch: string,
   { fixedBranch = '' }: CaseOptions = {},
 ) => async () => {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   setWith( { fixed_branch: fixedBranch } )
 
   // Create repo in temporary path

@@ -38,11 +38,13 @@ export const setWith = ( inputs: Record<string, string> = {} ) => {
     .entries( { ...defaults, ...inputs } )
     .reduce( ( inputs, [ name, value ] ) => ( {
       ...inputs,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      GITHUB_REF: 'master',
       // https://github.com/actions/toolkit/blob/master/docs/github-package.md#mocking-inputs
       [ `INPUT_${name.toUpperCase()}` ]: value,
-    } ), {} )
+    } ), {
+      GITHUB_REF: 'master',
+      GITHUB_REPOSITORY: 'test-user/test-repo',
+      GITHUB_TOKEN: 'abcdefg',
+    } )
 
   setEnv( actionInputs )
 }
