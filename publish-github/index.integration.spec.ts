@@ -9,7 +9,7 @@ import { setWith } from '../test/utils'
 
 const run = () => import( '.' ).then( ( { default: run } ) => run() )
 
-type NockReleaseBody = { prerelease: boolean, tag_name: string, body: string }
+type NockReleaseBody = { prerelease: boolean, tag_name: string, name: string, body: string }
 const nockCreateRelease = ( body?: NockReleaseBody, response?: nock.Body ) => nock( 'https://api.github.com' )
   .post( `/repos/${process.env.GITHUB_REPOSITORY!}/releases`, body )
   .reply( 200, response )
@@ -48,7 +48,7 @@ describe( 'publish-github', () => {
       const latestTag = 'v1.3.0'
       gitMock.raw.mockReturnValue( latestTag )
 
-      const createRelease = nockCreateRelease( { body: '', tag_name: 'v1.3.0', prerelease: false } )
+      const createRelease = nockCreateRelease( { body: '', name: latestTag, tag_name: latestTag, prerelease: false } )
 
       await run()
 
@@ -96,6 +96,7 @@ describe( 'publish-github', () => {
 
       const createRelease = nockCreateRelease( {
         body: changelogContent,
+        name: latestTag,
         tag_name: latestTag,
         prerelease: false,
       } )

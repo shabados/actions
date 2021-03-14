@@ -28,6 +28,7 @@ const createRelease = async ( { octokit, git }: CreateRelease ) => {
     html_url,
     assets_url,
   } } = await octokit.repos.createRelease( {
+    name: latestTag,
     owner,
     repo,
     body,
