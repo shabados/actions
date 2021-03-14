@@ -1,4 +1,4 @@
-name: Continuous Deployment
+name: Next Release
 
 on:
   push:

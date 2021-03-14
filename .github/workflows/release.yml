@@ -1,0 +1,36 @@
+name: Release
+
+on: workflow_dispatch
+
+jobs:
+  publish:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: harjot1singh/actions/setup-git-identity@release/v1
+        with:
+          user: Shabad OS Bot
+          email: team@shabados.com
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: harjot1singh/actions/bump-version@release/v1
+        with:
+          prerelease: next
+
+      - uses: c-hive/gha-npm-cache@v1
+
+      - run: npm install
+
+      - run: npm run build
+
+      - uses: harjot1singh/actions/publish-branch@release/v1
+        with:
+          gitignore: |
+            !dist/
+
+      - uses: harjot1singh/actions/publish-github@release/v1
+        with:
+          main_branch: release/v1
+          github_token: ${{ secrets.GH_BOT_TOKEN }}
