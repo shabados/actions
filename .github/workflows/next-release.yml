@@ -9,7 +9,7 @@ jobs:
   publish:
     runs-on: ubuntu-20.04
     steps:
-      - uses: harjot1singh/actions/setup-git-identity@release/next
+      - uses: shabados/actions/setup-git-identity@release/next
         with:
           user: Shabad OS Bot
           email: team@shabados.com
@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: harjot1singh/actions/bump-version@release/next
+      - uses: shabados/actions/bump-version@release/next
         with:
           prerelease: next
 
@@ -28,11 +28,11 @@ jobs:
 
       - run: npm run build
 
-      - uses: harjot1singh/actions/publish-github@release/next
+      - uses: shabados/actions/publish-github@release/next
         with:
           github_token: ${{ secrets.GH_BOT_TOKEN }}
 
-      - uses: harjot1singh/actions/publish-branch@release/next
+      - uses: shabados/actions/publish-branch@release/next
         with:
           gitignore: |
             !dist/
