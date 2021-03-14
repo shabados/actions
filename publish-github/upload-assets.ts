@@ -1,4 +1,6 @@
 
+import { basename } from 'path'
+
 import { context, getOctokit } from '@actions/github'
 import * as glob from '@actions/glob'
 import { info } from '@actions/core'
@@ -6,7 +8,7 @@ import { readFile } from 'fs-extra'
 
 import { getInputs } from '../utils'
 
-type UploadAssets ={
+type UploadAssets = {
   octokit: ReturnType<typeof getOctokit>,
   id: number,
 }
@@ -22,6 +24,7 @@ const uploadAssets = async ( { octokit, id }: UploadAssets ) => {
     info( `Uploading ${path}` )
 
     return octokit.repos.uploadReleaseAsset( {
+      name: basename( path ),
       data: await readFile( path ),
       owner,
       repo,

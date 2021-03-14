@@ -5,14 +5,14 @@ import { pathExists, readFile } from 'fs-extra'
 import { prerelease } from 'semver'
 import { SimpleGit } from 'simple-git'
 
-const { owner, repo } = context.repo
-
 type CreateRelease = {
   octokit: ReturnType<typeof getOctokit>,
   git: SimpleGit,
 }
 
 const createRelease = async ( { octokit, git }: CreateRelease ) => {
+  const { owner, repo } = context.repo
+
   // Get release body, if exists
   const bodyPath = getInput( 'changelog_path' )
   const body = await pathExists( bodyPath ) ? await readFile( bodyPath, 'utf8' ) : ''
