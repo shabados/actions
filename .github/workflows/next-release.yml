@@ -35,5 +35,4 @@ jobs:
 
       - uses: harjot1singh/actions/publish-github@release/next
         with:
-          main_branch: release/v1
           github_token: ${{ secrets.GH_BOT_TOKEN }}
