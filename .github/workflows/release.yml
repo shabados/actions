@@ -16,8 +16,6 @@ jobs:
           fetch-depth: 0
 
       - uses: harjot1singh/actions/bump-version@release/next
-        with:
-          prerelease: next
 
       - uses: c-hive/gha-npm-cache@v1
 
