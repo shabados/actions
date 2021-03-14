@@ -28,6 +28,10 @@ The previous semantic version.
 
 The next semantic version.
 
+### `has_changed`
+
+Whether the version has changed since the previous.
+
 ## Example usage
 
 ```yaml

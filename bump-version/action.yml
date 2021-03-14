@@ -16,6 +16,8 @@ outputs:
     description: The previous semantic version.
   next:
     description: The next semantic version.
+  has_changed:
+    description: Whether the version has changed since the previous.
 
 runs:
   using: node12

@@ -71,12 +71,17 @@ const run = async () => {
   // Get new version based on next release information
   const version = increment( current, releaseType as ReleaseType, prereleaseId )
 
-  // Run npm version [version] with custom commit message
-  info( `Bumping ${current} to ${version}` )
-  await asyncExec( `npm version ${version} -m "build: release v${version}\n\n[skip ci]"` )
+  const hasChanged = version !== current
+
+  if ( hasChanged ) {
+    // Run npm version [version] with custom commit message
+    info( `Bumping ${current} to ${version}` )
+    await asyncExec( `npm version ${version} -m "build: release v${version}\n\n[skip ci]"` )
+  }
 
   setOutput( 'previous', current )
   setOutput( 'next', version )
+  setOutput( 'has_changed', hasChanged )
 }
 
 if ( require.main === module ) {
