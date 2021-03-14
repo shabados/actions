@@ -12,7 +12,7 @@ inputs:
     default: release
 
   gitignore:
-    description: Contents of replacement .gitignore file, in order to commit build artifacts
+    description: The contents to append to the existing `.gitignore`. This is useful to exclude patterns that are normally included in the `.gitignore` file, with the `!` negation operator.
     default: ''
     required: false
 

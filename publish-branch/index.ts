@@ -1,5 +1,5 @@
 import { setFailed, info, getInput } from '@actions/core'
-import { writeFile } from 'fs-extra'
+import { appendFile } from 'fs-extra'
 import simpleGit from 'simple-git'
 
 import getBranches from './get-branches'
@@ -7,10 +7,10 @@ import getBranches from './get-branches'
 const run = async () => {
   const git = simpleGit()
 
-  // Replace root gitignore
-  info( 'Replacing .gitignore' )
+  // Append to root gitignore
   const gitignore = getInput( 'gitignore' )
-  await writeFile( '.gitignore', gitignore )
+  info( 'Appending to .gitignore' )
+  await appendFile( '.gitignore', `\n${gitignore}` )
 
   // Get branches to release to if no fixed branch is set
   const fixedBranch = getInput( 'fixed_branch' )

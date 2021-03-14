@@ -37,4 +37,4 @@ If set, publish to a fixed branch. Useful for `gh-pages` or other systems which 
 
 ### `gitignore`
 
-The contents of a new `.gitignore` file, used to determine which files should be committed and pushed to the release branch.
+The contents to append to the existing `.gitignore`. This is useful to exclude patterns that are normally included in the `.gitignore` file, with the `!` negation operator.

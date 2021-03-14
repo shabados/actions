@@ -69,7 +69,7 @@ describe( 'publish-branch', () => {
   it( 'should publish to a release branch of the latest tag, given previous releases', async () => {
     await runCase( 'v1.4.3', 'release/v1.4.3' )()
     await runCase( 'v1.4.4', 'release/v1.4.4' )()
-  }, 1000 * 20 )
+  } )
 
   it( 'should publish to a fixed branch, given an input with a fixed branch name', runCase( 'v1.4.3', 'gh-pages', { fixedBranch: 'gh-pages' } ) )
 
