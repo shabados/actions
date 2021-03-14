@@ -34,7 +34,7 @@ const run = async () => {
         await git.checkout( [ branch ] )
       }
 
-      await git.push( 'origin', branch )
+      await git.push( 'origin', branch, { '-f': null } )
     },
     Promise.resolve(),
   )
