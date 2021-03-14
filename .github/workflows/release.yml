@@ -25,11 +25,11 @@ jobs:
 
       - run: npm run build
 
+      - uses: harjot1singh/actions/publish-github@release/next
+        with:
+          github_token: ${{ secrets.GH_BOT_TOKEN }}
+
       - uses: harjot1singh/actions/publish-branch@release/next
         with:
           gitignore: |
             !dist/
-
-      - uses: harjot1singh/actions/publish-github@release/next
-        with:
-          github_token: ${{ secrets.GH_BOT_TOKEN }}
