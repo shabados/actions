@@ -63,7 +63,7 @@ const run = async () => {
 
   // Get bump based on commit history since last release
   const { releaseType = '', reason = '' } = await getConventionalBump()
-  info( `${reason} and is a prerelease` )
+  info( `${reason} ${prereleaseId ? `and is a ${prereleaseId} release` : ''}` )
 
   // Get current version
   const { version: current } = await readJSON( join( cwd(), 'package.json' ) ) as Package
