@@ -7,5 +7,5 @@ inputs:
     description: If set, amends the previous commit instead. Useful if the previous commit is a version bump commit.
 
 runs:
-  using: node16
+  using: node12
   main: dist/index.js

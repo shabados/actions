@@ -33,5 +33,5 @@ outputs:
     description: The URL to the release assets
 
 runs:
-  using: node16
+  using: node12
   main: dist/index.js
