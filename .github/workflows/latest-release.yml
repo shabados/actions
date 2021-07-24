@@ -21,6 +21,11 @@ jobs:
           fetch-depth: 0
 
       - uses: shabados/actions/bump-version@release/next
+        id: bump-version
+
+      - uses: shabados/actions/generate-changelog@release/next
+        with:
+          amend_commit: ${{ steps.bump-version.outputs.has_changed == 'true' }}
 
       - uses: c-hive/gha-npm-cache@v1
 
