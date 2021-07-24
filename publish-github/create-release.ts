@@ -13,7 +13,7 @@ const createRelease = async ( { octokit, version }: CreateRelease ) => {
   const { owner, repo } = context.repo
 
   // Get release body, if exists
-  const bodyPath = getInput( 'changelog_path' )
+  const bodyPath = getInput( 'body_path' )
   const body = await pathExists( bodyPath ) ? await readFile( bodyPath, 'utf8' ) : ''
 
   // Create GitHub release using latest tag
