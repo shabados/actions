@@ -4,7 +4,6 @@ description: Pushes any commits back to the main branch and creates a GitHub rel
 inputs:
   github_token:
     description: GitHub token to authenticate with. Must have push + release permissions.
-    required: true
 
   main_branch:
     description: The name of the main branch

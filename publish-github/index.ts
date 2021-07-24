@@ -16,7 +16,7 @@ const run = async () => {
   await git.push( 'origin', branch, { '--follow-tags': null } )
 
   // Get octokit instance
-  const token = getInput( 'github_token' ) || process.env.GITHUB_TOKEN!
+  const token = getInput( 'github_token' ) || process.env.github_token! || process.env.GITHUB_TOKEN!
   const octokit = getOctokit( token )
 
   // Get latest version through tag
