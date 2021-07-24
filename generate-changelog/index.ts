@@ -31,11 +31,8 @@ const run = async () => {
   const shouldAmend = !!getInput( 'amend_commit' )
 
   await git.add( CHANGELOG_PATH )
-  await git.commit(
-    `docs: update ${CHANGELOG_PATH}`,
-    undefined,
-    shouldAmend ? { '--amend': null, '--no-edit': null } : {},
-  )
+  if ( shouldAmend ) await git.raw( 'commit', '--amend', '--no-edit' )
+  else await git.commit( `docs: update ${CHANGELOG_PATH}` )
 }
 
 if ( require.main === module ) {
