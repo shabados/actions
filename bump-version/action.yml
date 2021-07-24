@@ -20,5 +20,5 @@ outputs:
     description: Whether the version has changed since the previous.
 
 runs:
-  using: node12
+  using: node16
   main: dist/index.js
