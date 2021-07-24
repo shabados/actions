@@ -1,0 +1,11 @@
+name: Generate Conventional Changelog
+
+description: Generates a CHANGELOG.md based on the conventional commit standard.
+
+inputs:
+  amend_commit:
+    description: If set, amends the previous commit instead. Useful if the previous commit is a version bump commit.
+
+runs:
+  using: node16
+  main: dist/index.js

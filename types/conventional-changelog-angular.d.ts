@@ -1,7 +1,13 @@
 declare module 'conventional-changelog-angular' {
-  import { Options } from 'conventional-recommended-bump'
+  import conventionalChangelog from 'conventional-changelog'
 
-  const options: Options['config']
+  type ConventionalChangelogOptions = {
+    writerOpts: Parameters<typeof conventionalChangelog>[4] & {
+      transform: ( commit: any, context: any ) => any,
+    },
+  }
+
+  const options: Promise<ConventionalChangelogOptions>
 
   export default options
 }
