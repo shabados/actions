@@ -6,6 +6,7 @@ Create a GitHub release, including commit sync, changelog inclusion, and glob-ba
 - Creates a GitHub release using latest git tag
 - If changelog present, publish it as release notes in the release
 - Upload any assets matching the globs supplied
+- If triggered because of a merge, will leave a comment on the original pull request with the released version and release link.
 
 ## Inputs
 
