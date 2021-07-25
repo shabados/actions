@@ -84,7 +84,7 @@ const run = async () => {
   setOutput( 'has_changed', hasChanged )
 }
 
-if ( require.main === module ) {
+if ( require.main === module  || context.job) {
   run().catch( ( error: Error ) => setFailed( `Action failed with error ${error.toString()}` ) )
 }
 

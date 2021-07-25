@@ -1,4 +1,5 @@
 import { setFailed, info, getInput } from '@actions/core'
+import { context } from '@actions/github'
 import { appendFile } from 'fs-extra'
 import simpleGit from 'simple-git'
 
@@ -43,7 +44,7 @@ const run = async () => {
   await git.checkout( process.env.GITHUB_REF! )
 }
 
-if ( require.main === module ) {
+if ( require.main === module || context.job ) {
   run().catch( ( error: Error ) => setFailed( `Action failed with error ${error.toString()}` ) )
 }
 
