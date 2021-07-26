@@ -56,8 +56,9 @@ const increment = ( version: string, releaseType: ReleaseType, prereleaseId: str
 const run = async () => {
   // Navigate to correct directory
   const path = getInput( 'path' )
-  debug( `Changing dir to ${path}` )
+  debug( `Changing dir to ${path}, from ${cwd()}` )
   chdir( path )
+  debug( `Path is now ${cwd()}` )
 
   // Name of prerelease id, if it should be one
   const prereleaseId = getInput( 'prerelease' )
@@ -67,8 +68,10 @@ const run = async () => {
   info( `${reason} ${prereleaseId ? `and is a ${prereleaseId} release` : ''}` )
 
   // Get current version
-  const { version: current } = await readJSON( join( cwd(), 'package.json' ) ) as Package
+  const packageJson = await readJSON( join( path, 'package.json' ) ) as Package
+  debug( `Package.json is ${JSON.stringify( packageJson, null, 2 )}` )
 
+  const { version: current } = packageJson
   // Get new version based on next release information
   const version = increment( current, releaseType as ReleaseType, prereleaseId )
 
