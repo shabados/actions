@@ -7,7 +7,7 @@ on:
 
 jobs:
   Trigger Latest Release:
-    if: "${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'Release: Latest')"
+    if: "${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'Release: Latest') }}"
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/github-script@v4
@@ -20,7 +20,7 @@ jobs:
             })
 
   Trigger Next Release:
-    if: "${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'Release: Next')"
+    if: "${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'Release: Next') }}"
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/github-script@v4
