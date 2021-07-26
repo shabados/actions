@@ -4,6 +4,7 @@ import { exec } from 'child_process'
 import { promisify } from 'util'
 
 import { getInput, setFailed, info, debug, setOutput } from '@actions/core'
+import { context } from '@actions/github'
 import { inc, minor, patch, prerelease, ReleaseType } from 'semver'
 import { readJSON } from 'fs-extra'
 
@@ -84,7 +85,7 @@ const run = async () => {
   setOutput( 'has_changed', hasChanged )
 }
 
-if ( require.main === module  || context.job) {
+if ( require.main === module || context.job ) {
   run().catch( ( error: Error ) => setFailed( `Action failed with error ${error.toString()}` ) )
 }
 
