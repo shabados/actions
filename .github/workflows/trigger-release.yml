@@ -13,7 +13,7 @@ jobs:
       - uses: actions/github-script@v4
         with:
           script: |
-            console.log('Context', context)
+            console.log('Context', context.repo.repo, context.repo.owner)
 
             github.repos.createDispatchEvent({
               event_type: 'release-latest',
@@ -28,7 +28,7 @@ jobs:
       - uses: actions/github-script@v4
         with:
           script: |
-            console.log('Context', context)
+            console.log('Context', context.repo.repo, context.repo.owner)
 
             github.repos.createDispatchEvent({
               event_type: 'release-next',
