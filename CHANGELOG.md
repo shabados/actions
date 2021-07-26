@@ -2,29 +2,30 @@
 
 
 
-# [1.3.0-next.3](https://github.com/shabados/actions/compare/v1.3.1-next.0...v1.3.0-next.3) (2021-07-26)
+# [1.3.0](https://github.com/shabados/actions/compare/v1.3.0-next.3...v1.3.0) (2021-07-26)
 
 
-### Bug Fixes
+### Reverts
 
-* **bump-version:** load package.json from path input ([a74cbdb](https://github.com/shabados/actions/commit/a74cbdbf67384104300962ca5559119a0191e2ab))
-* **publish-github:** only acquire version via annotated tags, not lightweight ([f6c4443](https://github.com/shabados/actions/commit/f6c444352ac95b3fc539e1f0a70832a5abe0c8f1))
-
-
-### Features
-
-* **commit-pr-has-label:** add action to check if associated PR has label ([75b4888](https://github.com/shabados/actions/commit/75b4888cc989e3e738889097d8d004a477fc58ab))
+* fix(publish-github): only acquire version via annotated tags, not lightweight ([492053a](https://github.com/shabados/actions/commit/492053a9095ae133dfef86992439265090e9753d))
 
 
 
-## [1.3.1-next.0](https://github.com/shabados/actions/compare/v1.3.0-next.0...v1.3.1-next.0) (2021-07-26)
+# [1.3.0-next.3](https://github.com/shabados/actions/compare/v1.3.0-next.0...v1.3.0-next.3) (2021-07-26)
 
 
 ### Bug Fixes
 
 * add context.job as a entrypoint trigger ([52e6205](https://github.com/shabados/actions/commit/52e62055ac141369a1c13888c83883cc21e7820b))
 * **bump-version:** add missing context import ([d13410d](https://github.com/shabados/actions/commit/d13410d18bd7769d0d03cc3128cee9a1e5308ed7))
+* **bump-version:** load package.json from path input ([a74cbdb](https://github.com/shabados/actions/commit/a74cbdbf67384104300962ca5559119a0191e2ab))
+* **publish-github:** only acquire version via annotated tags, not lightweight ([f6c4443](https://github.com/shabados/actions/commit/f6c444352ac95b3fc539e1f0a70832a5abe0c8f1))
 * revert action runner back to node12 ([#31](https://github.com/shabados/actions/issues/31)) ([b5dd693](https://github.com/shabados/actions/commit/b5dd693a35b21bed663809c8ea7b72c6922ee7b2))
+
+
+### Features
+
+* **commit-pr-has-label:** add action to check if associated PR has label ([75b4888](https://github.com/shabados/actions/commit/75b4888cc989e3e738889097d8d004a477fc58ab))
 
 
 
@@ -66,7 +67,15 @@
 
 
 
-# [1.1.0-next.3](https://github.com/shabados/actions/compare/efa7ddef0dad497e86bdcf72ae9cb84d04a718d1...v1.1.0-next.3) (2021-03-14)
+# [1.1.0-next.3](https://github.com/shabados/actions/compare/v1.1.0-next.2...v1.1.0-next.3) (2021-03-14)
+
+
+
+# [1.1.0-next.2](https://github.com/shabados/actions/compare/v1.1.0-next.1...v1.1.0-next.2) (2021-03-14)
+
+
+
+# [1.1.0-next.1](https://github.com/shabados/actions/compare/efa7ddef0dad497e86bdcf72ae9cb84d04a718d1...v1.1.0-next.1) (2021-03-14)
 
 
 ### Bug Fixes
