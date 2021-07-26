@@ -1,0 +1,19 @@
+name: Commit PR has label
+description: Checks if the PR associated to the context commit has a specific label.
+
+inputs:
+  github_token:
+    description: GitHub token to authenticate with. Must have push + release permissions.
+    required: true
+
+  label:
+    description: The label to check the presence of.
+    required: true
+
+outputs:
+  has_label:
+    description: Boolean for whether or not the associated pull request has the label.
+
+runs:
+  using: node12
+  main: dist/index.js
