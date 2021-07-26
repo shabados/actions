@@ -2,13 +2,12 @@ name: Release Latest
 
 on:
   workflow_dispatch:
-  pull_request:
+  repository_dispatch:
     types:
-      - closed
+      - release-latest
 
 jobs:
-  publish:
-    if: "${{ (github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'Release: Latest')) || github.event_name != 'pull_request' }}"
+  Build and Release:
     runs-on: ubuntu-20.04
     steps:
       - uses: shabados/actions/setup-git-identity@release/next
