@@ -1,0 +1,13 @@
+name: Log Owner
+
+on: push
+
+jobs:
+  trigger--latest-release:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/github-script@v4
+        with:
+          script: |
+            console.log(context.repo.owner)
+            console.log(context.payload.repository.owner.name)
