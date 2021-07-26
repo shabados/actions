@@ -2,12 +2,13 @@
 
 
 
-# [1.3.0-next.2](https://github.com/shabados/actions/compare/v1.3.1-next.0...v1.3.0-next.2) (2021-07-26)
+# [1.3.0-next.3](https://github.com/shabados/actions/compare/v1.3.1-next.0...v1.3.0-next.3) (2021-07-26)
 
 
 ### Bug Fixes
 
 * **bump-version:** load package.json from path input ([a74cbdb](https://github.com/shabados/actions/commit/a74cbdbf67384104300962ca5559119a0191e2ab))
+* **publish-github:** only acquire version via annotated tags, not lightweight ([f6c4443](https://github.com/shabados/actions/commit/f6c444352ac95b3fc539e1f0a70832a5abe0c8f1))
 
 
 ### Features
