@@ -6,7 +6,7 @@ on:
       - closed
 
 jobs:
-  Trigger Latest Release:
+  trigger--latest-release:
     if: "${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'Release: Latest') }}"
     runs-on: ubuntu-20.04
     steps:
@@ -19,7 +19,7 @@ jobs:
               repo: context.repo.repo,
             })
 
-  Trigger Next Release:
+  trigger--next-release:
     if: "${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'Release: Next') }}"
     runs-on: ubuntu-20.04
     steps:

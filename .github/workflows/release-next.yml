@@ -7,7 +7,7 @@ on:
       - release-next
 
 jobs:
-  Build and Release:
+  build-publish-release:
     runs-on: ubuntu-20.04
     steps:
       - uses: shabados/actions/setup-git-identity@release/next
