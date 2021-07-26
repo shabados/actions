@@ -20,7 +20,7 @@ const run = async () => {
   const octokit = getOctokit( token )
 
   // Get latest version through tag
-  const version = ( await ( git.raw( 'describe', '--abbrev=0', '--tags' ) ) ).trim()
+  const version = ( await ( git.raw( 'describe', '--abbrev=0' ) ) ).trim()
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { id, upload_url, html_url, assets_url } = await createRelease( { octokit, version } )
