@@ -12,9 +12,8 @@ jobs:
     steps:
       - uses: actions/github-script@v4
         with:
+          github-token: ${{ secrets.GH_BOT_TOKEN }}
           script: |
-            console.log('Context', context.repo.repo, context.repo.owner)
-
             github.repos.createDispatchEvent({
               event_type: 'release-latest',
               owner: context.repo.owner,
@@ -27,9 +26,8 @@ jobs:
     steps:
       - uses: actions/github-script@v4
         with:
+          github-token: ${{ secrets.GH_BOT_TOKEN }}
           script: |
-            console.log('Context', context.repo.repo, context.repo.owner)
-
             github.repos.createDispatchEvent({
               event_type: 'release-next',
               owner: context.repo.owner,
