@@ -9,8 +9,6 @@ jobs:
   trigger--latest-release:
     if: "${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'Release: Latest') }}"
     runs-on: ubuntu-20.04
-    permissions:
-      actions: write
     steps:
       - uses: actions/github-script@v4
         with:
@@ -24,8 +22,6 @@ jobs:
   trigger--next-release:
     if: "${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'Release: Next') }}"
     runs-on: ubuntu-20.04
-    permissions:
-      actions: write
     steps:
       - uses: actions/github-script@v4
         with:
