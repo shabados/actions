@@ -24,6 +24,7 @@ Shabad OS cross-repository GitHub actions, designed to facilitate our [release p
 - [Publish Docker](publish-docker/): Builds and publishes the supplied context to DockerHub and GitHub packages.
 - [Publish npm](publish-npm/): Publishes the current working directory to npm and GitHub packages.
 - [Publish Github](publish-github/): pushes any committed changes back to GitHub, creates a release using the latest git tag, and uploads any supplied assets to the release.
+- [Associated PR Has Label](commit-pr-has-label/): Checks if the PR associated to the context commit has a specific label.
 
 ## Usage
 
