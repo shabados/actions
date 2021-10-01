@@ -43,7 +43,7 @@ describe( 'publish-github', () => {
   describe( 'when creating a release', () => {
     it( 'should create a release with the latest tag', async () => {
       const latestTag = 'v1.3.0'
-      setWith( { release_version: latestTag } )
+      setWith( { release_version: latestTag, body_path: '' } )
 
       const createRelease = nockCreateRelease( { body: '', name: latestTag, tag_name: latestTag, prerelease: false } )
 
@@ -81,7 +81,7 @@ describe( 'publish-github', () => {
 
     it( 'should upload a changelog, if it exists', async () => {
       const latestTag = 'v1.1.0'
-      setWith( { changelog_path: 'changelog.md', release_version: latestTag } )
+      setWith( { body_path: 'changelog.md', release_version: latestTag } )
 
       const path = join( TMP_PATH, v4() )
       await mkdirp( path )
