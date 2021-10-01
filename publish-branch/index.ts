@@ -15,7 +15,7 @@ const run = async () => {
 
   // Get branches to release to if no fixed branch is set
   const fixedBranch = getInput( 'fixed_branch' )
-  const branches = fixedBranch ? [ fixedBranch ] : await getBranches( { git } )
+  const branches = fixedBranch ? [ fixedBranch ] : await getBranches()
 
   // Add files to temporary branch
   await git.branch( [ 'temporary-publish-branch-action-scratch' ] )

@@ -20,7 +20,7 @@ const runCase = (
   expectedBranch: string,
   { fixedBranch = '' }: CaseOptions = {},
 ) => async () => {
-  setWith( { fixed_branch: fixedBranch } )
+  setWith( { fixed_branch: fixedBranch, release_version: tag } )
 
   // Create repo in temporary path
   const path = resolve( TMP_PATH, v4() )
@@ -44,7 +44,6 @@ const runCase = (
     .init()
     .add( '-A' )
     .commit( `build: release ${tag}` )
-    .addTag( tag )
 
   // Clone simulated remote repository into local repository
   await localGit.clone( remotePath, localPath )

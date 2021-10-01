@@ -31,6 +31,10 @@ It can also release to a fixed name branch, by setting the `fixed_branch` input.
 
 If set, publish to a fixed branch. Useful for `gh-pages` or other systems which look for a specific branch.
 
+### `release_version`
+
+**Required** The version to create release branches for.
+
 ### `release_branch_prefix`
 
 **Required** The prefix of any release branches. Default `release`.

@@ -6,6 +6,10 @@ inputs:
     description: If set, a fixed branch to publish to, such as gh-pages
     required: false
 
+  release_version:
+    description: The version to create release branches for
+    required: true
+
   release_branch_prefix:
     description: The prefix for any release branches
     required: true
