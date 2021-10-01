@@ -3,7 +3,7 @@ import { createWriteStream } from 'fs'
 
 import angularChangelog from 'conventional-changelog-angular'
 import conventionalChangelog from 'conventional-changelog'
-import { getInput, info, setFailed } from '@actions/core'
+import { info, setFailed } from '@actions/core'
 import { context } from '@actions/github'
 import simpleGit from 'simple-git'
 
@@ -29,11 +29,10 @@ const run = async () => {
   info( `Committing ${CHANGELOG_PATH}` )
   const git = simpleGit()
 
-  const shouldAmend = !!getInput( 'amend_commit' )
+  const { latest = '' } = await git.tags()
 
   await git.add( CHANGELOG_PATH )
-  if ( shouldAmend ) await git.raw( 'commit', '--amend', '--no-edit' )
-  else await git.commit( `docs: update ${CHANGELOG_PATH}` )
+  await git.commit( `docs: update changelog with v${latest} notes` )
 }
 
 if ( require.main === module || context.job ) {
