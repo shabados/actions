@@ -80,7 +80,7 @@ const run = async () => {
   if ( hasChanged ) {
     // Run npm version [version] with custom commit message
     info( `Bumping ${current} to ${version}` )
-    await asyncExec( `npm version ${version} -m "build: release v${version}\n\n[skip ci]"` )
+    await asyncExec( `npm version ${version} -m "build: bump to v${version}\n\n[skip ci]"` )
   }
 
   setOutput( 'previous', current )
