@@ -19,8 +19,8 @@ const run = async () => {
   const token = getInput( 'github_token' ) || process.env.github_token! || process.env.GITHUB_TOKEN!
   const octokit = getOctokit( token )
 
-  // Get latest version through tag
-  const version = ( await ( git.raw( 'describe', '--abbrev=0', '--tags' ) ) ).trim()
+  // Get latest version through input
+  const version = getInput( 'release_version' )
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { id, upload_url, html_url, assets_url } = await createRelease( { octokit, version } )

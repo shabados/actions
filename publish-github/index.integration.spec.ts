@@ -20,7 +20,6 @@ const nockUploadAsset = ( releaseId: number, name: string ) => nock( 'https://up
 
 const gitMock = {
   push: jest.fn(),
-  raw: jest.fn( () => 'v1.0.0' ),
 }
 
 jest.mock( 'simple-git', () => () => gitMock )
@@ -43,10 +42,8 @@ describe( 'publish-github', () => {
 
   describe( 'when creating a release', () => {
     it( 'should create a release with the latest tag', async () => {
-      setWith()
-
       const latestTag = 'v1.3.0'
-      gitMock.raw.mockReturnValue( latestTag )
+      setWith( { release_version: latestTag } )
 
       const createRelease = nockCreateRelease( { body: '', name: latestTag, tag_name: latestTag, prerelease: false } )
 
@@ -83,14 +80,13 @@ describe( 'publish-github', () => {
     } )
 
     it( 'should upload a changelog, if it exists', async () => {
-      setWith( { changelog_path: 'changelog.md' } )
+      const latestTag = 'v1.1.0'
+      setWith( { changelog_path: 'changelog.md', release_version: latestTag } )
 
       const path = join( TMP_PATH, v4() )
       await mkdirp( path )
       chdir( path )
 
-      const latestTag = 'v1.1.0'
-      gitMock.raw.mockReturnValue( latestTag )
       const changelogContent = 'test changelog \nnew change'
       await writeFile( 'changelog.md', changelogContent )
 
