@@ -23,8 +23,6 @@ jobs:
         id: bump-version
 
       - uses: shabados/actions/generate-changelog@release/next
-        with:
-          amend_commit: ${{ steps.bump-version.outputs.has_changed == 'true' }}
 
       - uses: c-hive/gha-npm-cache@v1
 
@@ -35,8 +33,10 @@ jobs:
       - uses: shabados/actions/publish-github@release/next
         with:
           github_token: ${{ secrets.GH_BOT_TOKEN }}
+          release_version: ${{ steps.bump-version.outputs.next }}
 
       - uses: shabados/actions/publish-branch@release/next
         with:
+          release_version: ${{ steps.bump-version.outputs.next }}
           gitignore: |
             !dist/
