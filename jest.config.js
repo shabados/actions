@@ -5,11 +5,11 @@ module.exports = {
     '<rootDir>/test/setup.ts',
   ],
   watchPathIgnorePatterns: [
-    'tmp',
-    'coverage',
+    '<rootDir>/tmp/',
+    '<rootDir>/coverage/',
   ],
   coveragePathIgnorePatterns: [
-    '/test/',
-    '/node_modules/',
+    '<rootDir>/test/',
+    '<rootDir>/node_modules/',
   ],
 }
