@@ -4,7 +4,6 @@ import { createWriteStream } from 'fs'
 import angularChangelog from 'conventional-changelog-angular'
 import conventionalChangelog from 'conventional-changelog'
 import { info, setFailed } from '@actions/core'
-import { context } from '@actions/github'
 import simpleGit from 'simple-git'
 
 const CHANGELOG_PATH = 'CHANGELOG.md'
@@ -35,7 +34,7 @@ const run = async () => {
   await git.commit( `docs: update changelog with v${latest} notes` )
 }
 
-if ( require.main === module || context.job ) {
+if ( require.main === module ) {
   run().catch( ( error: Error ) => setFailed( `Action failed with error ${error.toString()}` ) )
 }
 
