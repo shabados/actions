@@ -6,19 +6,20 @@ import conventionalChangelog from 'conventional-changelog'
 import { info, setFailed } from '@actions/core'
 import simpleGit from 'simple-git'
 
+import { streamToPromise } from '../utils'
+
 const CHANGELOG_PATH = 'CHANGELOG.md'
 
 const generateChangelog = async () => {
-  const config = await angularChangelog
+  const writeStream = createWriteStream( CHANGELOG_PATH )
 
-  return new Promise( ( resolve, reject ) => {
-    const writeStream = createWriteStream( CHANGELOG_PATH )
-
-    conventionalChangelog( { releaseCount: 0, outputUnreleased: true, config } )
-      .pipe( writeStream )
-      .on( 'error', reject )
-      .on( 'close', resolve )
+  const changelogStream = conventionalChangelog( {
+    releaseCount: 0,
+    outputUnreleased: true,
+    config: await angularChangelog,
   } )
+
+  return streamToPromise( changelogStream.pipe( writeStream ) )
 }
 
 const run = async () => {
