@@ -20,11 +20,14 @@ Create a GitHub release, including commit sync, changelog inclusion, and glob-ba
 
 ### `body_path`
 
-**Required** The path to the file which will populate the contents of the release notes. Default `"CHANGELOG.md"`.
+**Required** The path to the file which will populate the contents of the release notes. If non-existent, generates the changelog for the previous release.
 
 ### `asset_paths`
 
 A newline seperated string representing a list of globs. Files which match will be uploaded to the release.
+
+### `release_version`
+**Required** The version to create the GitHub release for.
 
 ## Outputs
 

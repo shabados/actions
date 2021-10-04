@@ -4,12 +4,19 @@ import { chdir } from 'process'
 import { mkdirp, writeFile } from 'fs-extra'
 import nock from 'nock'
 import { v4 } from 'uuid'
+import { SimpleGit } from 'simple-git'
 
 import { setWith } from '../test/utils'
 
 const run = () => import( '.' ).then( ( { default: run } ) => run() )
 
-type NockReleaseBody = { prerelease: boolean, tag_name: string, name: string, body: string }
+type NockReleaseBody = {
+  prerelease: boolean,
+  tag_name: string,
+  name: string,
+  body: string | RegExp,
+}
+
 const nockCreateRelease = ( body?: NockReleaseBody, response?: nock.Body ) => nock( 'https://api.github.com' )
   .post( `/repos/${process.env.GITHUB_REPOSITORY!}/releases`, body )
   .reply( 200, response )
@@ -17,6 +24,8 @@ const nockCreateRelease = ( body?: NockReleaseBody, response?: nock.Body ) => no
 const nockUploadAsset = ( releaseId: number, name: string ) => nock( 'https://uploads.github.com' )
   .post( `/repos/${process.env.GITHUB_REPOSITORY!}/releases/${releaseId}/assets?name=${name}&` )
   .reply( 200 )
+
+const simpleGit = jest.requireActual<( path: string ) => SimpleGit>( 'simple-git' )
 
 const gitMock = {
   push: jest.fn(),
@@ -41,11 +50,11 @@ describe( 'publish-github', () => {
   } )
 
   describe( 'when creating a release', () => {
-    it( 'should create a release with the latest tag', async () => {
-      const latestTag = 'v1.3.0'
-      setWith( { release_version: latestTag, body_path: '' } )
+    it( 'should create a release with the supplied release version', async () => {
+      const releaseVersion = 'v1.3.0'
+      setWith( { release_version: releaseVersion } )
 
-      const createRelease = nockCreateRelease( { body: '', name: latestTag, tag_name: latestTag, prerelease: false } )
+      const createRelease = nockCreateRelease( { body: /.*/, name: releaseVersion, tag_name: releaseVersion, prerelease: false } )
 
       await run()
 
@@ -79,9 +88,9 @@ describe( 'publish-github', () => {
       expect( uploadAssets.every( ( mock ) => mock.isDone() ) ).toBeTruthy()
     } )
 
-    it( 'should upload a changelog, if it exists', async () => {
-      const latestTag = 'v1.1.0'
-      setWith( { body_path: 'changelog.md', release_version: latestTag } )
+    it( 'should upload the body path, if supplied', async () => {
+      const releaseVersion = 'v1.1.0'
+      setWith( { body_path: 'changelog.md', release_version: releaseVersion } )
 
       const path = join( TMP_PATH, v4() )
       await mkdirp( path )
@@ -92,8 +101,32 @@ describe( 'publish-github', () => {
 
       const createRelease = nockCreateRelease( {
         body: changelogContent,
-        name: latestTag,
-        tag_name: latestTag,
+        name: releaseVersion,
+        tag_name: releaseVersion,
+        prerelease: false,
+      } )
+
+      await run()
+
+      expect( createRelease.isDone() ).toBeTruthy()
+    } )
+
+    it( 'should upload a generated changelog, if body_path is not supplied', async () => {
+      const releaseVersion = 'v1.1.0'
+      setWith( { release_version: releaseVersion } )
+
+      const path = join( TMP_PATH, v4() )
+      await mkdirp( path )
+      chdir( path )
+
+      await simpleGit( path )
+        .init()
+        .commit( 'fix: test commit', undefined, { '--allow-empty': null } )
+
+      const createRelease = nockCreateRelease( {
+        body: /test commit/,
+        name: releaseVersion,
+        tag_name: releaseVersion,
         prerelease: false,
       } )
 
