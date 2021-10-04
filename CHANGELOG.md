@@ -2,6 +2,19 @@
 
 
 
+# [1.4.0](https://github.com/shabados/actions/compare/1.3.0-next.5...v1.4.0) (2021-10-04)
+
+
+### Features
+
+* **publish-branch:** publish to next when latest is released ([24ddd46](https://github.com/shabados/actions/commit/24ddd463dd11d3f29f686c2507ec0a01839ea843))
+
+
+
+# [1.3.0-next.5](https://github.com/shabados/actions/compare/v1.3.0-next.5...1.3.0-next.5) (2021-10-04)
+
+
+
 # [1.3.0-next.5](https://github.com/shabados/actions/compare/v1.3.0-next.4...v1.3.0-next.5) (2021-10-04)
 
 
