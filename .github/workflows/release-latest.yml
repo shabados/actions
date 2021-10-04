@@ -37,6 +37,7 @@ jobs:
         with:
           github_token: ${{ secrets.GH_BOT_TOKEN }}
           release_version: ${{ steps.bump-version.outputs.next }}
+          prerelease_branch: next
 
       - uses: shabados/actions/publish-branch@release/next
         with:
