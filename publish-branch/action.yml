@@ -15,6 +15,10 @@ inputs:
     required: true
     default: release
 
+  prerelease_branch:
+    description: The name of the prerelease branch. e.g. `next`.
+    required: false
+
   gitignore:
     description: The contents to append to the existing `.gitignore`. This is useful to exclude patterns that are normally included in the `.gitignore` file, with the `!` negation operator.
     default: ''
