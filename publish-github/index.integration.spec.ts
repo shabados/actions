@@ -4,7 +4,7 @@ import { chdir } from 'process'
 import { mkdirp, writeFile } from 'fs-extra'
 import nock from 'nock'
 import { v4 } from 'uuid'
-import { SimpleGit } from 'simple-git'
+import simpleGit from 'simple-git'
 
 import { setWith } from '../test/utils'
 
@@ -25,30 +25,9 @@ const nockUploadAsset = ( releaseId: number, name: string ) => nock( 'https://up
   .post( `/repos/${process.env.GITHUB_REPOSITORY!}/releases/${releaseId}/assets?name=${name}&` )
   .reply( 200 )
 
-const simpleGit = jest.requireActual<( path: string ) => SimpleGit>( 'simple-git' )
-
-const gitMock = {
-  push: jest.fn(),
-}
-
-jest.mock( 'simple-git', () => () => gitMock )
-
 const TMP_PATH = join( __dirname, 'tmp' )
 
 describe( 'publish-github', () => {
-  describe( 'when pushing', () => {
-    it( 'should push the contents of the directory to the main branch', async () => {
-      const testBranch = 'test'
-      setWith( { main_branch: testBranch } )
-
-      nockCreateRelease()
-
-      await run()
-
-      expect( gitMock.push ).toHaveBeenCalledWith( 'origin', testBranch, { '--follow-tags': null } )
-    } )
-  } )
-
   describe( 'when creating a release', () => {
     it( 'should create a release with the supplied release version', async () => {
       const releaseVersion = 'v1.3.0'

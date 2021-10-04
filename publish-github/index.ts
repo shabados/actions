@@ -1,19 +1,11 @@
 
 import { getInput, setFailed, info, setOutput } from '@actions/core'
 import { getOctokit } from '@actions/github'
-import simpleGit from 'simple-git'
 
 import createRelease from './create-release'
 import uploadAssets from './upload-assets'
 
-const git = simpleGit()
-
 const run = async () => {
-  // Push to main branch - REMOVE THIS
-  const branch = getInput( 'main_branch' )
-  info( `Pushing to ${branch}` )
-  await git.push( 'origin', branch, { '--follow-tags': null } )
-
   // Get octokit instance
   const token = getInput( 'github_token' ) || process.env.github_token! || process.env.GITHUB_TOKEN!
   const octokit = getOctokit( token )
