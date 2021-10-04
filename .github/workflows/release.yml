@@ -23,6 +23,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          token: ${{ secrets.GH_BOT_TOKEN }}
 
       - uses: shabados/actions/bump-version@release/next
         id: bump-version
