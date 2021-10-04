@@ -40,6 +40,8 @@ jobs:
 
       - run: npm run build
 
+      - uses: shabados/actions/integrate-commits@release/next
+
       - uses: shabados/actions/publish-github@release/next
         with:
           github_token: ${{ secrets.GH_BOT_TOKEN }}
