@@ -2,7 +2,6 @@
 
 Create a GitHub release, including commit sync, changelog inclusion, and glob-based asset uploading.
 
-- Pushes any commits and tags back to the `main` branch
 - Creates a GitHub release using latest git tag
 - If changelog present, publish it as release notes in the release
 - Upload any assets matching the globs supplied

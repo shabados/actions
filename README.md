@@ -24,7 +24,7 @@ Shabad OS cross-repository GitHub actions, designed to facilitate our [release p
 - [Publish Branch](publish-branch/): releases the current working directory as a release branch.
 - [Publish Docker](publish-docker/): Builds and publishes the supplied context to DockerHub and GitHub packages.
 - [Publish npm](publish-npm/): Publishes the current working directory to npm and GitHub packages.
-- [Publish Github](publish-github/): pushes any committed changes back to GitHub, creates a release, and uploads any supplied assets to the release.
+- [Publish Github](publish-github/): Creates a GitHub release, and uploads any supplied assets to the release.
 
 ## Usage
 
