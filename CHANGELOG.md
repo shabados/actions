@@ -2,6 +2,22 @@
 
 
 
+# [1.5.0-next.0](https://github.com/shabados/actions/compare/v1.4.0...v1.5.0-next.0) (2021-10-04)
+
+
+### Bug Fixes
+
+* **publish-github:** correct typing for issue number in notify ([cb83a73](https://github.com/shabados/actions/commit/cb83a73437c9a77cfc98f9115e59dcce07b62ddb))
+* **publish-github:** disable notify on merged PR ([5bab9b4](https://github.com/shabados/actions/commit/5bab9b4bda7f51aac4b770be83714516f83c3bdd))
+
+
+### Features
+
+* **integrate-commits:** add integrate-commits action ([c3d590a](https://github.com/shabados/actions/commit/c3d590a6fc6c4f215b25370e9dd10fe40d2dd161))
+* **publish-branches:** update  prerelease branch if supplied ([e863233](https://github.com/shabados/actions/commit/e863233232c2b10ff0d7458564d64ed7fcf5592d))
+
+
+
 # [1.4.0](https://github.com/shabados/actions/compare/1.3.0-next.5...v1.4.0) (2021-10-04)
 
 
