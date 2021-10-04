@@ -11,7 +11,7 @@ Create a GitHub release, including commit sync, changelog inclusion, and glob-ba
 
 ### `github_token`
 
-**Required** The GitHub token to authenticate with. Must have push + release permissions.
+**Required** The GitHub token to authenticate with. Must have release permissions.
 
 ### `main_branch`
 

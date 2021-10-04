@@ -6,6 +6,10 @@ This allows for confidence when re-integrating commits made by CI or release pro
 
 ## Inputs
 
+### `github_token`
+
+**Required** The GitHub token to authenticate with. Must have push permissions.
+
 ### `main_branch`
 
 **Required** The name of the main branch to push commits to.
