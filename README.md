@@ -25,6 +25,7 @@ Shabad OS cross-repository GitHub actions, designed to facilitate our [release p
 - [Publish Docker](publish-docker/): Builds and publishes the supplied context to DockerHub and GitHub packages.
 - [Publish npm](publish-npm/): Publishes the current working directory to npm and GitHub packages.
 - [Publish Github](publish-github/): Creates a GitHub release, and uploads any supplied assets to the release.
+- [Wait for Green](wait-for-green/): Waits until the status checks for a given ref have passed.
 
 ## Usage
 

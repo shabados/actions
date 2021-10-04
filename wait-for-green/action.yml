@@ -1,0 +1,20 @@
+name: Wait for Green
+description: Waits until the status checks for a given ref have passed.
+
+inputs:
+  github_token:
+    description: GitHub token to authenticate with. Must have release permissions.
+    required: true
+
+  ref:
+    description: The ref to get the statuses of.
+    required: true
+
+  interval:
+    description: The interval in seconds to poll the statuses at.
+    required: true
+    default: '30'
+
+runs:
+  using: node12
+  main: dist/index.js
