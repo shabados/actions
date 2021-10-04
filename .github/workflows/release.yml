@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  workflow_call:
+    inputs:
+      prerelease:
+        required: false
+        type: string
+    secrets:
+      GH_BOT_TOKEN:
+        required: true
+
+jobs:
+  build-publish-release:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: shabados/actions/setup-git-identity@release/next
+        with:
+          user: Shabad OS Bot
+          email: team@shabados.com
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: shabados/actions/bump-version@release/next
+        id: bump-version
+        with:
+          prerelease: ${{ inputs.prerelease }}
+
+      - uses: shabados/actions/generate-changelog@release/next
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - uses: shabados/actions/publish-github@release/next
+        with:
+          github_token: ${{ secrets.GH_BOT_TOKEN }}
+          release_version: ${{ steps.bump-version.outputs.next }}
+          prerelease_branch: next
+
+      - uses: shabados/actions/publish-branch@release/next
+        with:
+          release_version: ${{ steps.bump-version.outputs.next }}
+          gitignore: |
+            !dist/
