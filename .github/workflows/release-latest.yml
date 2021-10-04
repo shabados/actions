@@ -8,6 +8,6 @@ on:
 
 jobs:
   build-publish-release:
-    uses: ./github/workflows/release.yml
+    uses: ./github/workflows/release.yml@main
     secrets:
       GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
