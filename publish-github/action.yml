@@ -12,13 +12,16 @@ inputs:
     default: main
 
   body_path:
-    description: The path to the file to populate the release body with
-    required: true
-    default: CHANGELOG.md
+    description: The path to the file to populate the release body with. If non-existent, generates the changelog for the previous release.
+    required: false
 
   asset_paths:
     description: Newline seperated list of globs/path to assets to be uploaded
     required: false
+
+  release_version:
+    description: The version to create the GitHub release for.
+    required: true
 
 outputs:
   id:

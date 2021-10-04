@@ -3,6 +3,14 @@ import { getInput, info } from '@actions/core'
 import { context, getOctokit } from '@actions/github'
 import { pathExists, readFile } from 'fs-extra'
 import { prerelease } from 'semver'
+import conventionalChangelog from 'conventional-changelog'
+import angularChangelog from 'conventional-changelog-angular'
+
+import { streamToString, tail } from '../utils'
+
+const generateChangelog = async () => streamToString(
+  conventionalChangelog( { config: await angularChangelog } ),
+).then( tail )
 
 type CreateRelease = {
   octokit: ReturnType<typeof getOctokit>,
@@ -12,9 +20,11 @@ type CreateRelease = {
 const createRelease = async ( { octokit, version }: CreateRelease ) => {
   const { owner, repo } = context.repo
 
-  // Get release body, if exists
+  // Get release body, else generate changelog for latest release
   const bodyPath = getInput( 'body_path' )
-  const body = await pathExists( bodyPath ) ? await readFile( bodyPath, 'utf8' ) : ''
+  const body = await pathExists( bodyPath )
+    ? await readFile( bodyPath, 'utf8' )
+    : await generateChangelog()
 
   // Create GitHub release using latest tag
   info( `Creating GitHub release for ${version}` )

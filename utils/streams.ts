@@ -1,0 +1,14 @@
+import { Stream } from 'stream'
+
+export const streamToPromise = ( stream: Stream ) => new Promise(
+  ( resolve, reject ) => stream.on( 'error', reject ).on( 'close', resolve ),
+)
+
+export const streamToString = ( stream: Stream ) => new Promise<string>( ( resolve, reject ) => {
+  const chunks = [] as Uint8Array[]
+
+  stream
+    .on( 'data', ( chunk ) => chunks.push( Buffer.from( chunk ) ) )
+    .on( 'error', ( err ) => reject( err ) )
+    .on( 'close', () => resolve( Buffer.concat( chunks ).toString( 'utf8' ) ) )
+} )

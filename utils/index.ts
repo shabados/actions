@@ -1,2 +1,3 @@
 export * from './get-inputs'
-export * from './stream-to-promise'
+export * from './streams'
+export * from './strings'
