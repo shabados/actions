@@ -20,7 +20,7 @@ runs:
       shell: bash
       run: git push origin ${{ inputs.integration_branch }}
 
-    - uses: WyriHaximus/github-action-wait-for-status@v2
+    - uses: WyriHaximus/github-action-wait-for-status@v1.4.0
 
     - name: Push to main branch
       shell: bash
