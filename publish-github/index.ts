@@ -1,10 +1,9 @@
 
 import { getInput, setFailed, info, setOutput } from '@actions/core'
-import { getOctokit, context } from '@actions/github'
+import { getOctokit } from '@actions/github'
 import simpleGit from 'simple-git'
 
 import createRelease from './create-release'
-import notify from './notify'
 import uploadAssets from './upload-assets'
 
 const git = simpleGit()
@@ -29,11 +28,10 @@ const run = async () => {
   setOutput( 'html_url', html_url )
   setOutput( 'assets_url', assets_url )
 
+  info( `Release created: ${html_url}` )
+
   info( 'Uploading assets' )
   await uploadAssets( { octokit, id } )
-
-  // Leave release comment on pull request
-  if ( context.eventName === 'pull_request' ) await notify( { octokit, releaseLink: html_url, version } )
 }
 
 if ( require.main === module ) {
