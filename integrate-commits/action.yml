@@ -18,7 +18,7 @@ runs:
   steps:
     - name: Push to integration branch
       shell: bash
-      run: git push -u origin ${{ inputs.integration_branch }}
+      run: git push -u origin HEAD:${{ inputs.integration_branch }}
 
     - uses: WyriHaximus/github-action-wait-for-status@v1.4.0
 
