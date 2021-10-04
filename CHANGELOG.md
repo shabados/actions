@@ -1,4 +1,13 @@
-# Unreleased (2021-10-03)
+# Unreleased (2021-10-04)
+
+
+
+# [1.3.0-next.5](https://github.com/shabados/actions/compare/v1.3.0-next.4...v1.3.0-next.5) (2021-10-04)
+
+
+### Features
+
+* **publish-github:** add support for changelog in release body ([0809325](https://github.com/shabados/actions/commit/0809325a2071ec7f075033f378a1a0c10f66d853))
 
 
 
