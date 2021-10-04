@@ -17,13 +17,13 @@ runs:
   using: composite
   steps:
     - name: Push to integration branch
+      shell: bash
       run: git push origin ${{ inputs.integration_branch }}
 
     - uses: WyriHaximus/github-action-wait-for-status@v2
-      id: status-checks
 
     - name: Push to main branch
-      if: steps.status-checks.outputs.status == 'success'
+      shell: bash
       run: |
         git checkout ${{ inputs.main_branch }}
         git merge ${{ inputs.integration_branch }}
