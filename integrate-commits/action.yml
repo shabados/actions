@@ -1,0 +1,30 @@
+name: Integrate Commits
+
+description: Integrate commits back into the main branch by building on a side-branch and passing status checks.
+
+inputs:
+  main_branch:
+    required: true
+    default: main
+    description: The name of the main branch to push commits to.
+
+  integration_branch:
+    required: true
+    default: integration
+    description: The branch to push commits to and build before merging into the main branch.
+
+runs:
+  using: composite
+  steps:
+    - name: Push to integration branch
+      run: git push origin ${{ inputs.integration_branch }}
+
+    - uses: WyriHaximus/github-action-wait-for-status@v2
+      id: status-checks
+
+    - name: Push to main branch
+      if: steps.status-checks.outputs.status == 'success'
+      run: |
+        git checkout ${{ inputs.main_branch }}
+        git merge ${{ inputs.integration_branch }}
+        git push ${{ inputs.main_branch}} --follow-tags

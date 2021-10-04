@@ -9,7 +9,7 @@ import uploadAssets from './upload-assets'
 const git = simpleGit()
 
 const run = async () => {
-  // Push to main branch
+  // Push to main branch - REMOVE THIS
   const branch = getInput( 'main_branch' )
   info( `Pushing to ${branch}` )
   await git.push( 'origin', branch, { '--follow-tags': null } )
