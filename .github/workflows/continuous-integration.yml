@@ -1,9 +1,10 @@
 name: Continuous Integration
 
 on:
+  pull_request:
   push:
-    branches-ignore:
-      - 'release/**'
+    branches:
+      - main
 
 jobs:
   lint:
