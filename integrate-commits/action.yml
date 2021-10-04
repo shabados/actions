@@ -24,9 +24,10 @@ runs:
       shell: bash
       run: git push -uf origin HEAD:${{ inputs.integration_branch }}
 
-    - uses: WyriHaximus/github-action-wait-for-status@v1.4.0
-      env:
-        GITHUB_TOKEN: ${{ inputs.github_token }}
+    - uses: shabados/actions/wait-for-green@release/next
+      with:
+        github_token: ${{ inputs.github_token }}
+        ref: ${{ inputs.integration_branch }}
 
     - name: Push to main branch
       shell: bash
