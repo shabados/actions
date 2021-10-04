@@ -3,6 +3,10 @@ name: Integrate Commits
 description: Integrate commits back into the main branch by building on a side-branch and passing status checks.
 
 inputs:
+  github_token:
+    required: true
+    description: GitHub token to authenticate with. Must have push permissions.
+
   main_branch:
     required: true
     default: main
@@ -21,6 +25,8 @@ runs:
       run: git push -u origin HEAD:${{ inputs.integration_branch }}
 
     - uses: WyriHaximus/github-action-wait-for-status@v1.4.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.github_token }}
 
     - name: Push to main branch
       shell: bash
