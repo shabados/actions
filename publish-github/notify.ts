@@ -4,7 +4,7 @@ type Notify = {
   octokit: ReturnType<typeof getOctokit>,
   version: string,
   releaseLink: string,
-  issueNumber: string,
+  issueNumber: number,
 }
 
 const notify = async ( { issueNumber, octokit, releaseLink, version }: Notify ) => {
