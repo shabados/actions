@@ -20,6 +20,7 @@ Shabad OS cross-repository GitHub actions, designed to facilitate our [release p
 - [Setup Git Identity](setup-git-identity/): sets up the Git user name and email address.
 - [Semantic Version Bump](bump-version/): figures out and bumps version based on commit history, supporting a sensible prerelease scheme.
 - [Generate Changelog](generate-changelog/): generates and commits the latest `CHANGELOG.md` based on conventional commits.
+- [Integrate Commits](integrate-commits/): integrates commits made by CI into the main branch by pushing and building them to an integration branch and merging when the checks go green.
 - [Publish Branch](publish-branch/): releases the current working directory as a release branch.
 - [Publish Docker](publish-docker/): Builds and publishes the supplied context to DockerHub and GitHub packages.
 - [Publish npm](publish-npm/): Publishes the current working directory to npm and GitHub packages.
