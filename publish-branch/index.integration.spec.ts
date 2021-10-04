@@ -78,6 +78,7 @@ describe( 'publish-branch', () => {
 
   describe( 'with releases', () => {
     it( 'should publish to the latest branch', runCase( 'v1.4.3', 'release/latest' ) )
+    it( 'should publish to the next branch', runCase( 'v1.4.3', 'release/next' ) )
     it( 'should publish to the major branch of the latest tag', runCase( 'v1.4.3', 'release/v1' ) )
     it( 'should publish to the minor branch of the latest tag', runCase( 'v1.4.3', 'release/v1.4' ) )
   } )

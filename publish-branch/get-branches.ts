@@ -18,6 +18,7 @@ const getBranches = async () => {
         'latest',
         `v${major( version )}`,
         `v${major( version )}.${minor( version )}`,
+        prereleaseName,
       ]
     ),
   ].map( ( suffix ) => `${prefix}/${suffix}` )
