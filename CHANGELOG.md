@@ -1,4 +1,30 @@
-# Unreleased (2021-10-04)
+# Unreleased (2021-10-06)
+
+
+
+# [1.5.0-next.1](https://github.com/shabados/actions/compare/v1.5.0-next.0...v1.5.0-next.1) (2021-10-06)
+
+
+### Bug Fixes
+
+* **bump-version:** remove build skip from commit message ([8dcd7b8](https://github.com/shabados/actions/commit/8dcd7b8eb7f2f213b9df2759c3b0298c2debe525))
+* **integrate-commits:** add shell property and remove unsupported if ([0e66c56](https://github.com/shabados/actions/commit/0e66c56e1387f7ff9d6915377aff5048f51ddf5f))
+* **integrate-commits:** correctly merge integration branch ([635ee6e](https://github.com/shabados/actions/commit/635ee6ea1837671addcd8f8138ec06f8b582a4cd))
+* **integrate-commits:** create remote branch by prefixing HEAD in push ([86c794d](https://github.com/shabados/actions/commit/86c794d12595f1ebffb11e4bb09f4fb03af3656d))
+* **integrate-commits:** create upstream integration branch ([7740c7c](https://github.com/shabados/actions/commit/7740c7cb5cc660e2d1bedbb8296287d849c34712))
+* **integrate-commits:** force push to integration branch ([68c502d](https://github.com/shabados/actions/commit/68c502de5f3f764077375443bc487402626816be))
+* **integrate-commits:** reference correct version of status check action ([f2cd19e](https://github.com/shabados/actions/commit/f2cd19e1c1435bfcef278925ea690834dc9804f3))
+* **integrate-commits:** supply github token ([dfde4a0](https://github.com/shabados/actions/commit/dfde4a0283e6061444ef04de458e3357ceb05aef))
+* **integrate-commits:** use wait-for-green action ([e5a28a9](https://github.com/shabados/actions/commit/e5a28a9b8ae37eb61602bbee058044ba0832d7e2))
+* **publish-github:** reference github token as input, not secret ([1c9185b](https://github.com/shabados/actions/commit/1c9185bdd5b58c1f10f5c2e885c4c2c23cd42a7c))
+* **wait-for-green:** report the number of seconds, not milliseconds ([70ae878](https://github.com/shabados/actions/commit/70ae8789bfcc5abefd13d437e4637a267e4057ee))
+* **wait-for-green:** wait for checks on a ref, not statuses ([c288234](https://github.com/shabados/actions/commit/c2882340ffba50e7cb1aadd2dc986bd549d20848))
+
+
+### Features
+
+* **publish-github:** remove git push step from publish-github action ([5b57cf2](https://github.com/shabados/actions/commit/5b57cf25592c038c2160ae9f7c42ff94c211792d))
+* **wait-for-green:** add action to wait for a ref to go green ([acd7699](https://github.com/shabados/actions/commit/acd76995e7cc1eeeff15378bc0e135e6683de156))
 
 
 
