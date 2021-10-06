@@ -15,7 +15,7 @@ const pollUntil = (
 } )
 
 const run = async () => {
-  const interval = Number( getInput( 'interval' ) ) * 1000
+  const interval = Number( getInput( 'interval' ) )
   const ref = getInput( 'ref' )
 
   // Get octokit instance
@@ -34,7 +34,7 @@ const run = async () => {
 
       return status === 'completed' && conclusion === 'success'
     } )
-  }, interval )
+  }, interval * 1000 )
 }
 
 if ( require.main === module ) {
