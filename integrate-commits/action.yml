@@ -33,5 +33,5 @@ runs:
       shell: bash
       run: |
         git checkout ${{ inputs.main_branch }}
-        git merge ${{ inputs.integration_branch }}
-        git push ${{ inputs.main_branch}} --follow-tags
+        git merge origin/${{ inputs.integration_branch }}
+        git push origin ${{ inputs.main_branch}} --follow-tags
