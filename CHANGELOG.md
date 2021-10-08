@@ -1,4 +1,13 @@
-# Unreleased (2021-10-06)
+# Unreleased (2021-10-08)
+
+
+
+# [1.5.0-next.2](https://github.com/shabados/actions/compare/v1.5.0-next.1...v1.5.0-next.2) (2021-10-08)
+
+
+### Bug Fixes
+
+* **publish-branches:** filter null release branches out ([6a2db33](https://github.com/shabados/actions/commit/6a2db33355121aeeb4853c7126c48573bdc7f749))
 
 
 
