@@ -2,6 +2,21 @@
 
 
 
+## [1.5.1-next.0](https://github.com/shabados/actions/compare/1.5.0...v1.5.1-next.0) (2021-10-09)
+
+
+### Bug Fixes
+
+* **bump-version:** add v to version in commit message ([da47fe9](https://github.com/shabados/actions/commit/da47fe968e8e5df990ac9682d5ff0cc63d0ba6ec))
+* **generate-changelog:** do not fetch latest tag as version ([d2bbf37](https://github.com/shabados/actions/commit/d2bbf37241a32c1c371c7d6178849b4e27626318))
+* **publish-github:** add v prefix in release name and tag ([8d2e777](https://github.com/shabados/actions/commit/8d2e777cfa645fb252d57134309d4518ad5b2dff))
+
+
+
+# [1.5.0](https://github.com/shabados/actions/compare/v1.5.0...1.5.0) (2021-10-09)
+
+
+
 # [1.5.0](https://github.com/shabados/actions/compare/v1.5.0-next.3...v1.5.0) (2021-10-09)
 
 
