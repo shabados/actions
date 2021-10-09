@@ -2,6 +2,15 @@
 
 
 
+# [1.5.0](https://github.com/shabados/actions/compare/v1.5.0-next.3...v1.5.0) (2021-10-09)
+
+
+### Bug Fixes
+
+* use end event in streamToString instead of close ([56ad5ed](https://github.com/shabados/actions/commit/56ad5ed6da92276968bc1a07e55eaa7e623fa286))
+
+
+
 # [1.5.0-next.3](https://github.com/shabados/actions/compare/v1.5.0-next.2...v1.5.0-next.3) (2021-10-09)
 
 
