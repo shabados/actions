@@ -27,14 +27,18 @@ const commitMessages = {
  * Runs each test case.
  * Creates a fresh repo and applies the commits.
  */
-const runCase = ( prerelease = '' ) => async ( from: string, to: string, commits: CommitType[] ) => {
+const runCase = ( prereleaseBranch = '' ) => async (
+  from: string,
+  to: string,
+  commits: CommitType[],
+) => {
   // Create repo in temporary path
   const path = resolve( TMP_PATH, v4() )
   await mkdirp( path )
 
   // Set up git and action with path
   const git = SimpleGit( path )
-  setWith( { path, prerelease } )
+  setWith( { path, prerelease: !!prereleaseBranch, prerelease_branch: prereleaseBranch } )
 
   // Initialise repository with package.json
   const packagePath = join( path, 'package.json' )

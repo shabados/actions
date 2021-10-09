@@ -10,6 +10,6 @@ jobs:
   build-publish-release:
     uses: shabados/actions/.github/workflows/release.yml@main
     with:
-      prerelease: next
+      prerelease: true
     secrets:
       GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}

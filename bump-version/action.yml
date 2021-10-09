@@ -5,11 +5,15 @@ inputs:
   path:
     description: Path to package
     required: true
-    default: './'
-  prerelease:
-    description: Bump to a prerelease version. Uses the string value as the prerelease id e.g. 1.0.0-<prerelease>.2. If empty, does not bump to a prerelease.
+    default: ./
+  prerelease_branch:
+    description: If prerelease bump is required, the name of the prerelease id.
     required: true
-    default: ''
+    default: next
+  prerelease:
+    description: If true, the version is bumped to the next prerelease, with the prerelease id set in `prerelease_branch`.
+    required: false
+    default: false
 
 outputs:
   previous:
