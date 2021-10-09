@@ -29,10 +29,8 @@ const run = async () => {
   info( `Committing ${CHANGELOG_PATH}` )
   const git = simpleGit()
 
-  const { latest = '' } = await git.tags()
-
   await git.add( CHANGELOG_PATH )
-  await git.commit( `docs: update changelog with v${latest} notes` )
+  await git.commit( 'docs: update changelog' )
 }
 
 if ( require.main === module ) {
