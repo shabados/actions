@@ -3,10 +3,8 @@ import { basename } from 'path'
 
 import { context, getOctokit } from '@actions/github'
 import * as glob from '@actions/glob'
-import { info } from '@actions/core'
+import { getMultilineInput, info } from '@actions/core'
 import { readFile } from 'fs-extra'
-
-import { getInputs } from '../utils'
 
 type UploadAssets = {
   octokit: ReturnType<typeof getOctokit>,
@@ -16,7 +14,7 @@ type UploadAssets = {
 const { owner, repo } = context.repo
 
 const uploadAssets = async ( { octokit, id }: UploadAssets ) => {
-  const assetPaths = getInputs( 'asset_paths' )
+  const assetPaths = getMultilineInput( 'asset_paths' )
   const globber = await glob.create( assetPaths.join( '\n' ) )
   const files = await globber.glob()
 
