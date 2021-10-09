@@ -3,7 +3,7 @@ import { join } from 'path'
 import { exec } from 'child_process'
 import { promisify } from 'util'
 
-import { getInput, setFailed, info, debug, setOutput } from '@actions/core'
+import { getInput, setFailed, info, debug, setOutput, getBooleanInput } from '@actions/core'
 import { inc, minor, patch, prerelease, ReleaseType } from 'semver'
 import { readJSON } from 'fs-extra'
 
@@ -15,21 +15,23 @@ type Package = {
   version: string,
 }
 
-const increment = ( version: string, releaseType: ReleaseType, prereleaseId: string ) => {
+const increment = (
+  version: string,
+  releaseType: ReleaseType,
+  isNextPrerelease: boolean,
+  prereleaseId: string,
+) => {
   const nextInc = ( version: string, releaseType: string ) => inc( version, releaseType as ReleaseType, prereleaseId ) ?? ''
   const removeNext = ( version: string ) => nextInc( version, 'patch' )
-
-  // Whether the next release should be a prerelease
-  const isNextPrelease = !!prereleaseId
 
   // Previous version is a prerelease or not
   const isCurrentlyPrerelease = !!prerelease( version )
 
   // Latest => Next, use prebump
-  if ( !isCurrentlyPrerelease && isNextPrelease ) return nextInc( version, `pre${releaseType}` )
+  if ( !isCurrentlyPrerelease && isNextPrerelease ) return nextInc( version, `pre${releaseType}` )
 
   // Next => Latest, do appropriate increment and then strip prerelease tag
-  if ( isCurrentlyPrerelease && !isNextPrelease ) {
+  if ( isCurrentlyPrerelease && !isNextPrerelease ) {
     // Never need to increment the patch
     return removeNext( releaseType === 'patch'
       ? version
@@ -37,7 +39,7 @@ const increment = ( version: string, releaseType: ReleaseType, prereleaseId: str
   }
 
   // Latest => Latest, just bump normally
-  if ( !isCurrentlyPrerelease && !isNextPrelease ) return nextInc( version, releaseType )
+  if ( !isCurrentlyPrerelease && !isNextPrerelease ) return nextInc( version, releaseType )
 
   // Next => Next
   // if patch, do prerelease
@@ -59,12 +61,13 @@ const run = async () => {
   chdir( path )
   debug( `Path is now ${cwd()}` )
 
-  // Name of prerelease id, if it should be one
-  const prereleaseId = getInput( 'prerelease' )
+  // Name of prerelease id
+  const prereleaseId = getInput( 'prerelease_branch' )
+  const isPrerelease = getBooleanInput( 'prerelease' )
 
   // Get bump based on commit history since last release
   const { releaseType = '', reason = '' } = await getConventionalBump()
-  info( `${reason} ${prereleaseId ? `and is a ${prereleaseId} release` : ''}` )
+  info( `${reason} ${isPrerelease ? `and is a ${prereleaseId} prerelease` : ''}` )
 
   // Get current version
   const packageJson = await readJSON( join( path, 'package.json' ) ) as Package
@@ -72,14 +75,14 @@ const run = async () => {
 
   const { version: current } = packageJson
   // Get new version based on next release information
-  const version = increment( current, releaseType as ReleaseType, prereleaseId )
+  const version = increment( current, releaseType as ReleaseType, isPrerelease, prereleaseId )
 
   const hasChanged = version !== current
 
   if ( hasChanged ) {
     // Run npm version [version] with custom commit message
     info( `Bumping ${current} to ${version}` )
-    await asyncExec( `npm version ${version} -m "build: bump to v${version}"` )
+    await asyncExec( `npm version ${version} -m "build: bump to ${version}"` )
   }
 
   setOutput( 'previous', current )
