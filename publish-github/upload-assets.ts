@@ -21,9 +21,10 @@ const uploadAssets = async ( { octokit, id }: UploadAssets ) => {
   await Promise.all( files.map( async ( path ) => {
     info( `Uploading ${path}` )
 
-    return octokit.repos.uploadReleaseAsset( {
+    return octokit.rest.repos.uploadReleaseAsset( {
       name: basename( path ),
-      data: await readFile( path ),
+      // Until octokit type definitions are updated in @actions/github
+      data: await readFile( path ) as any as string,
       owner,
       repo,
       // eslint-disable-next-line @typescript-eslint/naming-convention
