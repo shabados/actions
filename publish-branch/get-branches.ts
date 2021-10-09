@@ -22,7 +22,7 @@ const getBranches = async () => {
   const isRelease = !prereleaseName
 
   return [
-    version,
+    `v${version}`,
     // Always update the prerelease branch, if supplied
     prereleaseBranch,
     ...( isRelease ? getReleaseBranches( version ) : [] ),
