@@ -26,6 +26,8 @@ const createRelease = async ( { octokit, version }: CreateRelease ) => {
     ? await readFile( bodyPath, 'utf8' )
     : await generateChangelog()
 
+  const tag = `v${version}`
+
   // Create GitHub release using latest tag
   info( `Creating GitHub release for ${version}` )
   const { data: {
@@ -34,11 +36,11 @@ const createRelease = async ( { octokit, version }: CreateRelease ) => {
     html_url,
     assets_url,
   } } = await octokit.rest.repos.createRelease( {
-    name: version,
+    name: tag,
+    tag_name: tag,
     owner,
     repo,
     body,
-    tag_name: version,
     prerelease: !!prerelease( version ),
   } )
 
