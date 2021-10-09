@@ -14,7 +14,7 @@ const TMP_PATH = join( __dirname, 'tmp' )
 enum CommitType {
   feat = 'feat',
   fix = 'fix',
-  breaking = 'BREAKING CHANGE'
+  breaking = 'BREAKING CHANGE',
 }
 
 const commitMessages = {
