@@ -32,6 +32,7 @@
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "airbnb",
     "airbnb-typescript"
   ],
   "parser": "@typescript-eslint/parser",
@@ -40,7 +41,6 @@
     "project": "./tsconfig.json",
     "sourceType": "module" // Allows for the use of imports
   },
-  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     // Spacing in brackets is consistent and readable
     "array-bracket-spacing": ["error", "always"],
@@ -81,7 +81,7 @@
       }
     ],
     // No unused variables except when prepended with _, to indicate that they're not to be used, but require definition to be valid code
-    "no-unused-vars": [
+    "@typescript-eslint/no-unused-vars": [
       "error",
       {
         "ignoreRestSiblings": true,
