@@ -1,4 +1,13 @@
-# Unreleased (2021-10-08)
+# Unreleased (2021-10-09)
+
+
+
+# [1.5.0-next.3](https://github.com/shabados/actions/compare/v1.5.0-next.2...v1.5.0-next.3) (2021-10-09)
+
+
+### Features
+
+* **bump-version:** use boolean flag to determine prerelease bump ([187353b](https://github.com/shabados/actions/commit/187353befd27074b4794f85a70b180f73a1e6f79))
 
 
 
