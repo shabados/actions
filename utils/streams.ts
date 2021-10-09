@@ -10,5 +10,5 @@ export const streamToString = ( stream: Stream ) => new Promise<string>( ( resol
   stream
     .on( 'data', ( chunk ) => chunks.push( Buffer.from( chunk ) ) )
     .on( 'error', ( err ) => reject( err ) )
-    .on( 'close', () => resolve( Buffer.concat( chunks ).toString( 'utf8' ) ) )
+    .on( 'end', () => resolve( Buffer.concat( chunks ).toString( 'utf8' ) ) )
 } )
