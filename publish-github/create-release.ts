@@ -33,7 +33,7 @@ const createRelease = async ( { octokit, version }: CreateRelease ) => {
     upload_url,
     html_url,
     assets_url,
-  } } = await octokit.repos.createRelease( {
+  } } = await octokit.rest.repos.createRelease( {
     name: version,
     owner,
     repo,

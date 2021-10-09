@@ -27,7 +27,7 @@ const run = async () => {
   info( `Polling ${repo.owner}/${repo.repo}/${ref} every ${interval} seconds` )
 
   await pollUntil( async () => {
-    const { data: { check_runs: runs } } = await octokit.checks.listForRef( { ...repo, ref } )
+    const { data: { check_runs: runs } } = await octokit.rest.checks.listForRef( { ...repo, ref } )
 
     return runs.every( ( { name, conclusion, status } ) => {
       info( `Status of ${name}: ${status} -> ${conclusion ?? ''}` )

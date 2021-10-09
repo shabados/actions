@@ -10,7 +10,7 @@ type Notify = {
 const notify = async ( { issueNumber, octokit, releaseLink, version }: Notify ) => {
   const { issue: { owner, repo } } = context
 
-  await octokit.issues.createComment( {
+  await octokit.rest.issues.createComment( {
     body: `Released in [${version}](${releaseLink}) 🎉`,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     issue_number: issueNumber,
