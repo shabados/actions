@@ -26,7 +26,7 @@ Create a GitHub release, including commit sync, changelog inclusion, and glob-ba
 A newline seperated string representing a list of globs. Files which match will be uploaded to the release.
 
 ### `release_version`
-**Required** The version to create the GitHub release for.
+**Required** The version to create the GitHub release for. E.g. `1.2.3`. `v` will be prefixed.
 
 ## Outputs
 

@@ -20,7 +20,7 @@ inputs:
     required: false
 
   release_version:
-    description: The version to create the GitHub release for.
+    description: The version to create the GitHub release for. E.g. `1.2.3`. `v` will be prefixed.
     required: true
 
 outputs:

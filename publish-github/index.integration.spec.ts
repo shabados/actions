@@ -21,6 +21,13 @@ const nockCreateRelease = ( body?: NockReleaseBody, response?: nock.Body ) => no
   .post( `/repos/${process.env.GITHUB_REPOSITORY!}/releases`, body )
   .reply( 200, response )
 
+type GetReleaseBody = ( body: Omit<NockReleaseBody, 'name' | 'tag_name'> & { version: string } ) => NockReleaseBody
+const getReleaseBody: GetReleaseBody = ( { version, ...body } ) => ( {
+  ...body,
+  tag_name: `v${version}`,
+  name: `v${version}`,
+} )
+
 const nockUploadAsset = ( releaseId: number, name: string ) => nock( 'https://uploads.github.com' )
   .post( `/repos/${process.env.GITHUB_REPOSITORY!}/releases/${releaseId}/assets?name=${name}&` )
   .reply( 200 )
@@ -30,10 +37,10 @@ const TMP_PATH = join( __dirname, 'tmp' )
 describe( 'publish-github', () => {
   describe( 'when creating a release', () => {
     it( 'should create a release with the supplied release version', async () => {
-      const releaseVersion = 'v1.3.0'
-      setWith( { release_version: releaseVersion } )
+      const version = '1.3.0'
+      setWith( { release_version: version } )
 
-      const createRelease = nockCreateRelease( { body: /.*/, name: releaseVersion, tag_name: releaseVersion, prerelease: false } )
+      const createRelease = nockCreateRelease( getReleaseBody( { body: /.*/, version, prerelease: false } ) )
 
       await run()
 
@@ -68,8 +75,8 @@ describe( 'publish-github', () => {
     } )
 
     it( 'should upload the body path, if supplied', async () => {
-      const releaseVersion = 'v1.1.0'
-      setWith( { body_path: 'changelog.md', release_version: releaseVersion } )
+      const version = '1.1.0'
+      setWith( { body_path: 'changelog.md', release_version: version } )
 
       const path = join( TMP_PATH, v4() )
       await mkdirp( path )
@@ -78,12 +85,11 @@ describe( 'publish-github', () => {
       const changelogContent = 'test changelog \nnew change'
       await writeFile( 'changelog.md', changelogContent )
 
-      const createRelease = nockCreateRelease( {
+      const createRelease = nockCreateRelease( getReleaseBody( {
         body: changelogContent,
-        name: releaseVersion,
-        tag_name: releaseVersion,
+        version,
         prerelease: false,
-      } )
+      } ) )
 
       await run()
 
@@ -91,8 +97,8 @@ describe( 'publish-github', () => {
     } )
 
     it( 'should upload a generated changelog, if body_path is not supplied', async () => {
-      const releaseVersion = 'v1.1.0'
-      setWith( { release_version: releaseVersion } )
+      const version = '1.1.0'
+      setWith( { release_version: version } )
 
       const path = join( TMP_PATH, v4() )
       await mkdirp( path )
@@ -102,12 +108,11 @@ describe( 'publish-github', () => {
         .init()
         .commit( 'fix: test commit', undefined, { '--allow-empty': null } )
 
-      const createRelease = nockCreateRelease( {
+      const createRelease = nockCreateRelease( getReleaseBody( {
         body: /test commit/,
-        name: releaseVersion,
-        tag_name: releaseVersion,
+        version,
         prerelease: false,
-      } )
+      } ) )
 
       await run()
 
