@@ -48,6 +48,7 @@ const runCase = ( prereleaseBranch = '' ) => async (
     .init()
     .add( packagePath )
     .commit( `build: release v${from}` )
+    .addTag( `v${from}` )
 
   // Apply each commit
   const options: Options = { '--allow-empty': null }
