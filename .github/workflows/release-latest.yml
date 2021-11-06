@@ -2,9 +2,6 @@ name: Release Latest
 
 on:
   workflow_dispatch:
-  repository_dispatch:
-    types:
-      - release-latest
 
 jobs:
   build-publish-release:
