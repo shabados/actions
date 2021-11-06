@@ -3,8 +3,10 @@ name: Release Latest
 on:
   workflow_dispatch:
 
+concurrency: release
+
 jobs:
-  build-publish-release:
+  release:
     uses: shabados/actions/.github/workflows/release.yml@main
     secrets:
       GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}

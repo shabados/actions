@@ -12,9 +12,10 @@ on:
         required: true
 
 jobs:
-  build-publish-release:
+  prepare:
     runs-on: ubuntu-20.04
-    concurrency: release
+    outputs:
+      release-version: ${{ steps.bump-version.outputs.next }}
     steps:
       - uses: shabados/actions/setup-git-identity@release/next
         with:
@@ -33,6 +34,22 @@ jobs:
 
       - uses: shabados/actions/generate-changelog@release/next
 
+      - name: Upload workspace
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-workspace
+          path: ${{ github.workspace }}
+
+  build:
+    runs-on: ubuntu-20.04
+    needs: prepare
+    steps:
+      - name: Download workspace
+        uses: actions/download-artifact@v2
+        with:
+          name: release-workspace
+          path: ${{ github.workspace }}
+
       - uses: actions/setup-node@v2
         with:
           node-version: 14
@@ -42,18 +59,62 @@ jobs:
 
       - run: npm run build
 
+      - name: Upload workspace
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-workspace
+          path: |
+            ${{ github.workspace }}
+            !node_modules
+
+  integrate:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+      - name: Download workspace
+        uses: actions/download-artifact@v2
+        with:
+          name: release-workspace
+          path: ${{ github.workspace }}
+
       - uses: shabados/actions/integrate-commits@release/next
+        if: inputs.prerelease != true
         with:
           github_token: ${{ secrets.GH_BOT_TOKEN }}
+
+  publish-github:
+    runs-on: ubuntu-20.04
+    needs: [prepare, integrate]
+    steps:
+      - name: Download workspace
+        uses: actions/download-artifact@v2
+        with:
+          name: release-workspace
+          path: ${{ github.workspace }}
 
       - uses: shabados/actions/publish-github@release/next
         with:
           github_token: ${{ secrets.GH_BOT_TOKEN }}
-          release_version: ${{ steps.bump-version.outputs.next }}
+          release_version: ${{ needs.prepare.outputs.release-version }}
+
+  publish-branches:
+    runs-on: ubuntu-20.04
+    needs: [prepare, build, integrate]
+    steps:
+      - uses: shabados/actions/setup-git-identity@release/next
+        with:
+          user: Shabad OS Bot
+          email: team@shabados.com
+
+      - name: Download workspace
+        uses: actions/download-artifact@v2
+        with:
+          name: release-workspace
+          path: ${{ github.workspace }}
 
       - uses: shabados/actions/publish-branch@release/next
         with:
           prerelease_branch: next
-          release_version: ${{ steps.bump-version.outputs.next }}
+          release_version: ${{ needs.prepare.outputs.release-version }}
           gitignore: |
             !dist/
