@@ -1,4 +1,18 @@
-# Unreleased (2021-10-09)
+# Unreleased (2021-11-06)
+
+
+
+# [2.0.0-next.0](https://github.com/shabados/actions/compare/v1.5.2...v2.0.0-next.0) (2021-11-06)
+
+
+### Features
+
+* **bump-version:** read current version from git tags ([af00f84](https://github.com/shabados/actions/commit/af00f8435ba00d468dcf120691f5a20970fae437))
+
+
+### BREAKING CHANGES
+
+* **bump-version:** no longer reads current version from package.json
 
 
 
