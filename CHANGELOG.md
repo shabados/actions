@@ -2,6 +2,14 @@
 
 
 
+## [2.0.2-next.2](https://github.com/shabados/actions/compare/v2.0.2-next.1...v2.0.2-next.2) (2021-11-06)
+
+
+
+## [2.0.2-next.1](https://github.com/shabados/actions/compare/v2.0.2-next.0...v2.0.2-next.1) (2021-11-06)
+
+
+
 ## [2.0.1](https://github.com/shabados/actions/compare/v2.0.1-next.1...v2.0.1) (2021-11-06)
 
 
