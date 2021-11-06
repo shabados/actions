@@ -2,6 +2,19 @@
 
 
 
+# [2.0.0](https://github.com/shabados/actions/compare/v2.0.0-next.1...v2.0.0) (2021-11-06)
+
+
+### Bug Fixes
+
+* **bump-version:** use creatordate instead of taggerdate to get version ([33f0390](https://github.com/shabados/actions/commit/33f0390e1f3220caab8e14176cad8a70985d3195))
+
+
+
+# [2.0.0-next.1](https://github.com/shabados/actions/compare/v2.0.0-next.0...v2.0.0-next.1) (2021-11-06)
+
+
+
 # [2.0.0-next.0](https://github.com/shabados/actions/compare/v1.5.2...v2.0.0-next.0) (2021-11-06)
 
 
