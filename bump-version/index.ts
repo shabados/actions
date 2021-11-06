@@ -1,19 +1,14 @@
 import { chdir, cwd } from 'process'
-import { join } from 'path'
 import { exec } from 'child_process'
 import { promisify } from 'util'
 
 import { getInput, setFailed, info, debug, setOutput, getBooleanInput } from '@actions/core'
 import { inc, minor, patch, prerelease, ReleaseType } from 'semver'
-import { readJSON } from 'fs-extra'
+import SimpleGit from 'simple-git'
 
 import getConventionalBump from './get-conventional-bump'
 
 const asyncExec = promisify( exec )
-
-type Package = {
-  version: string,
-}
 
 const increment = (
   version: string,
@@ -69,11 +64,9 @@ const run = async () => {
   const { releaseType = '', reason = '' } = await getConventionalBump()
   info( `${reason} ${isPrerelease ? `and is a ${prereleaseId} prerelease` : ''}` )
 
-  // Get current version
-  const packageJson = await readJSON( join( path, 'package.json' ) ) as Package
-  debug( `Package.json is ${JSON.stringify( packageJson, null, 2 )}` )
+  // Get current version from git tag
+  const [ current ] = ( await SimpleGit().tag( { '--sort': '-taggerdate' } ) ).split( '\n' )
 
-  const { version: current } = packageJson
   // Get new version based on next release information
   const version = increment( current, releaseType as ReleaseType, isPrerelease, prereleaseId )
 
