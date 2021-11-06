@@ -2,6 +2,19 @@
 
 
 
+## [2.0.1](https://github.com/shabados/actions/compare/v2.0.1-next.1...v2.0.1) (2021-11-06)
+
+
+### Bug Fixes
+
+* **bump-version:** sort by semver if git tag creatordate is same ([5b917b7](https://github.com/shabados/actions/commit/5b917b712a6ad6e40a71cd3141fc1385a861610f))
+
+
+
+## [2.0.1-next.1](https://github.com/shabados/actions/compare/v2.0.1-next.0...v2.0.1-next.1) (2021-11-06)
+
+
+
 # [2.0.0](https://github.com/shabados/actions/compare/v2.0.0-next.1...v2.0.0) (2021-11-06)
 
 
