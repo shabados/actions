@@ -2,9 +2,9 @@ name: Release Next
 
 on:
   workflow_dispatch:
-  repository_dispatch:
-    types:
-      - release-next
+  push:
+    branches:
+      - main
 
 concurrency: release
 
