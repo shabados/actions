@@ -64,8 +64,8 @@ const run = async () => {
   const { releaseType = '', reason = '' } = await getConventionalBump()
   info( `${reason} ${isPrerelease ? `and is a ${prereleaseId} prerelease` : ''}` )
 
-  // Get current version from git tag
-  const [ current ] = ( await SimpleGit().tag( { '--sort': '-creatordate' } ) ).split( '\n' )
+  // Get current version from git tag. In case of a tiebreaker, sort by semver.
+  const [ current ] = ( await SimpleGit().tag( [ '--sort=-v:refname', '--sort=-creatordate' ] ) ).split( '\n' )
 
   // Get new version based on next release information
   const version = increment( current, releaseType as ReleaseType, isPrerelease, prereleaseId )
