@@ -1,14 +1,11 @@
 import { chdir, cwd } from 'process'
-import { exec } from 'child_process'
-import { promisify } from 'util'
+import { execSync } from 'child_process'
 
 import { getInput, setFailed, info, debug, setOutput, getBooleanInput } from '@actions/core'
 import { inc, minor, patch, prerelease, ReleaseType } from 'semver'
 import SimpleGit from 'simple-git'
 
 import getConventionalBump from './get-conventional-bump'
-
-const asyncExec = promisify( exec )
 
 const increment = (
   version: string,
@@ -65,7 +62,9 @@ const run = async () => {
   info( `${reason} ${isPrerelease ? `and is a ${prereleaseId} prerelease` : ''}` )
 
   // Get current version from git tag. In case of a tiebreaker, sort by semver.
-  const [ current ] = ( await SimpleGit().tag( [ '--sort=-v:refname', '--sort=-creatordate' ] ) ).split( '\n' )
+  const [ current = '0.0.0' ] = ( await SimpleGit().tag( [ '--sort=-v:refname', '--sort=-creatordate' ] ) )
+    .split( '\n' )
+    .filter( ( version ) => version )
 
   // Get new version based on next release information
   const version = increment( current, releaseType as ReleaseType, isPrerelease, prereleaseId )
@@ -75,7 +74,10 @@ const run = async () => {
   if ( hasChanged ) {
     // Run npm version [version] with custom commit message
     info( `Bumping ${current} to ${version}` )
-    await asyncExec( `npm version ${version} -m "build: bump to v${version}"` )
+    execSync(
+      `npm version ${version} -m "build: bump to v${version}"`,
+      { stdio: 'inherit' },
+    )
   }
 
   setOutput( 'previous', current )
