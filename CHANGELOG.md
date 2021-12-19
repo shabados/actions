@@ -1,4 +1,21 @@
-# Unreleased (2021-11-06)
+# Unreleased (2021-12-19)
+
+
+
+## [2.0.2](https://github.com/shabados/actions/compare/v2.0.2-next.3...v2.0.2) (2021-12-19)
+
+
+
+## [2.0.2-next.3](https://github.com/shabados/actions/compare/v2.0.2-next.2...v2.0.2-next.3) (2021-12-19)
+
+
+### Bug Fixes
+
+* **bump-version:** provide fallback version when no git tags are present ([c1e55c5](https://github.com/shabados/actions/commit/c1e55c5493eec0cbc0f1d8edf0b6a813820f4e05))
+
+
+
+## [2.0.2-next.2](https://github.com/shabados/actions/compare/v2.0.2-next.1...v2.0.2-next.2) (2021-11-06)
 
 
 
