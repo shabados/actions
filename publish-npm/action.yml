@@ -19,6 +19,7 @@ runs:
         registry-url: 'https://registry.npmjs.org'
 
     - run: npm publish --access public
+      shell: bash
       env:
         NODE_AUTH_TOKEN: ${{ inputs.npm_token || env.npm_token }}
 
@@ -28,5 +29,6 @@ runs:
         scope: '@${{ github.repository_owner }}'
 
     - run: npm publish
+      shell: bash
       env:
         NODE_AUTH_TOKEN: ${{ inputs.github_token || env.github_token }}
