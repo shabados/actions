@@ -2,6 +2,10 @@
 
 
 
+## [2.0.6-next.0](https://github.com/shabados/actions/compare/v2.0.5...v2.0.6-next.0) (2022-04-03)
+
+
+
 ## [2.0.5](https://github.com/shabados/actions/compare/v2.0.4-next.0...v2.0.5) (2022-04-03)
 
 
