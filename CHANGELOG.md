@@ -1,4 +1,17 @@
-# Unreleased (2021-12-19)
+# Unreleased (2022-04-03)
+
+
+
+## [2.0.3-next.1](https://github.com/shabados/actions/compare/v2.0.3-next.0...v2.0.3-next.1) (2022-04-03)
+
+
+### Bug Fixes
+
+* **publish-npm:** add required shell property to steps ([0c4dd6e](https://github.com/shabados/actions/commit/0c4dd6e5160279f5e0ce4504ea08e921c1e71f04))
+
+
+
+## [2.0.3-next.0](https://github.com/shabados/actions/compare/v2.0.2...v2.0.3-next.0) (2021-12-19)
 
 
 
