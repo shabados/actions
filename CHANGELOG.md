@@ -1,4 +1,12 @@
-# Unreleased (2022-04-03)
+# Unreleased (2022-06-16)
+
+
+
+## [2.0.6-next.1](https://github.com/shabados/actions/compare/v2.0.6-next.0...v2.0.6-next.1) (2022-06-16)
+
+
+
+## [2.0.6-next.0](https://github.com/shabados/actions/compare/v2.0.5...v2.0.6-next.0) (2022-04-03)
 
 
 
