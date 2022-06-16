@@ -1,21 +1,11 @@
-<img src="https://raw.githubusercontent.com/shabados/presenter/dev/resources/icon.png" width="128" alt="Shabad OS">
+# Shabad OS Actions
 
-# @shabados/actions
+GitHub actions to facilitate Shabad OS [release process guidelines](https://docs.shabados.com/community/project-management).
 
-Shabad OS cross-repository GitHub actions, designed to facilitate our [release process guidelines](https://github.com/shabados/.github/wiki/Project-Management).
+[![Release](https://github.com/shabados/actions/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/shabados/actions/actions/workflows/release.yml)
+[![Release Next](https://github.com/shabados/actions/actions/workflows/release-next.yml/badge.svg?branch=main)](https://github.com/shabados/actions/actions/workflows/release-next.yml)
 
-[![Release][release-image]][release-url]
-[![Next Release][next-image]][next-url]
-
-- [Actions](#actions)
-    - [Actions](#actions-1)
-  - [Usage](#usage)
-  - [Todo](#todo)
-    - [Test Process](#test-process)
-    - [Build Process](#build-process)
-      - [Release Targets](#release-targets)
-
-### Actions
+## Actions
 
 - [Setup Git Identity](setup-git-identity/): sets up the Git user name and email address.
 - [Semantic Version Bump](bump-version/): figures out and bumps version based on commit history, supporting a sensible prerelease scheme.
@@ -56,8 +46,3 @@ jobs:
       - uses: actions/checkout@v1
       - uses: shabados/actions/bump-version@release/v1
 ```
-
-[release-image]: https://img.shields.io/github/workflow/status/shabados/actions/Release/main.svg?label=release
-[release-url]: https://github.com/shabados/actions/actions?query=workflow%3A%22Release%22+branch%3Amain
-[next-image]: https://img.shields.io/github/workflow/status/shabados/actions/Next%20Release/main.svg?label=next%20release
-[next-url]: https://github.com/shabados/actions/actions?query=workflow%3A%22Next+Release%22+branch%3Amain
