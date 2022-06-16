@@ -12,7 +12,7 @@
     "url": "git+https://github.com/shabados/actions.git"
   },
   "author": "Shabad OS Team <team@shabados.com>",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/shabados/actions/issues"
   },
