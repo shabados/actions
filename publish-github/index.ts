@@ -1,5 +1,4 @@
-
-import { getInput, setFailed, info, setOutput } from '@actions/core'
+import { getInput, info, setFailed, setOutput } from '@actions/core'
 import { getOctokit } from '@actions/github'
 
 import createRelease from './create-release'

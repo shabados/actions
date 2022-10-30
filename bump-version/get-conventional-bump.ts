@@ -1,7 +1,7 @@
 import { promisify } from 'util'
 
-import getBump, { Callback, Options } from 'conventional-recommended-bump'
 import angularChangelog from 'conventional-changelog-angular'
+import getBump, { Callback, Options } from 'conventional-recommended-bump'
 
 type AsyncGetBump = ( options: Options ) => Promise<Callback.Recommendation>
 

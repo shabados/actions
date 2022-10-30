@@ -6,7 +6,6 @@ import SimpleGit, { Options } from 'simple-git'
 import { v4 } from 'uuid'
 
 import { setWith } from '../test/utils'
-
 import run from '.'
 
 const TMP_PATH = join( __dirname, 'tmp' )

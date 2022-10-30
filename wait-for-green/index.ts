@@ -1,6 +1,6 @@
 import { getInput, info, setFailed } from '@actions/core'
 import { context, getOctokit } from '@actions/github'
-import { setIntervalAsync, clearIntervalAsync } from 'set-interval-async/dynamic'
+import { clearIntervalAsync, setIntervalAsync } from 'set-interval-async/dynamic'
 
 const pollUntil = (
   condition: () => Promise<boolean>,
