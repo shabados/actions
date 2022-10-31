@@ -1,5 +1,5 @@
 import { existsSync } from 'node:fs'
-import { mkdir, mkdtemp } from 'node:fs/promises'
+import { mkdir, mkdtemp, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import { chdir } from 'node:process'
 
@@ -59,6 +59,15 @@ const runCase = (
   // Expect artifact to be present on pushed origin
   expect( existsSync( join( remotePath, 'output.json' ) ) ).toBeTruthy()
 }
+
+beforeAll( async () => {
+  await mkdir( TMP_PATH, { recursive: true } )
+} )
+
+afterAll( async () => {
+  chdir( __dirname )
+  await rm( TMP_PATH, { force: true, recursive: true } )
+} )
 
 jest.setTimeout( 1000 * 10 )
 

@@ -1,4 +1,4 @@
-import { mkdtemp, writeFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { chdir } from 'node:process'
 
@@ -32,6 +32,15 @@ const nockUploadAsset = ( releaseId: number, name: string ) => nock( 'https://up
   .reply( 200 )
 
 const TMP_PATH = join( __dirname, 'tmp' )
+
+beforeAll( async () => {
+  await mkdir( TMP_PATH, { recursive: true } )
+} )
+
+afterAll( async () => {
+  chdir( __dirname )
+  await rm( TMP_PATH, { force: true, recursive: true } )
+} )
 
 describe( 'publish-github', () => {
   describe( 'when creating a release', () => {
