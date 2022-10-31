@@ -29,11 +29,18 @@ const run = async () => {
   await pollUntil( async () => {
     const { data: { check_runs: runs } } = await octokit.rest.checks.listForRef( { ...repo, ref } )
 
-    return runs.every( ( { name, conclusion, status } ) => {
+    const result = runs.every( ( { name, conclusion, status } ) => {
       info( `Status of ${name}: ${status} -> ${conclusion ?? ''}` )
 
-      return status === 'completed' && conclusion === 'success'
+      return status === 'completed'
     } )
+
+    if (
+      result
+      && runs.some( ( { conclusion } ) => [ 'failure', 'timed_out' ].includes( conclusion ?? '' ) )
+    ) setFailed( 'Check(s) have failed' )
+
+    return result
   }, interval * 1000 )
 }
 
