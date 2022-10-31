@@ -1,5 +1,6 @@
-import { setFailed, info, getInput } from '@actions/core'
-import { appendFile } from 'fs-extra'
+import { appendFile } from 'node:fs/promises'
+
+import { getInput, info, setFailed } from '@actions/core'
 import simpleGit from 'simple-git'
 
 import getBranches from './get-branches'

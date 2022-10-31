@@ -1,9 +1,8 @@
-import { join } from 'path'
-import { chdir } from 'process'
+import { mkdtemp, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import { chdir } from 'node:process'
 
-import { mkdirp, writeFile } from 'fs-extra'
 import nock from 'nock'
-import { v4 } from 'uuid'
 import simpleGit from 'simple-git'
 
 import { setWith } from '../test/utils'
@@ -58,8 +57,7 @@ describe( 'publish-github', () => {
       } )
       const mockFiles = [ 'test1.txt', 'test.txt', 'test3.text', 'asset1.png', 'ignore.txt' ]
 
-      const path = join( TMP_PATH, v4() )
-      await mkdirp( path )
+      const path = await mkdtemp( join( TMP_PATH, '/' ) )
       chdir( path )
       await Promise.all( mockFiles.map( ( name ) => writeFile( name, '' ) ) )
 
@@ -78,8 +76,7 @@ describe( 'publish-github', () => {
       const version = '1.1.0'
       setWith( { body_path: 'changelog.md', release_version: version } )
 
-      const path = join( TMP_PATH, v4() )
-      await mkdirp( path )
+      const path = await mkdtemp( join( TMP_PATH, '/' ) )
       chdir( path )
 
       const changelogContent = 'test changelog \nnew change'
@@ -100,8 +97,7 @@ describe( 'publish-github', () => {
       const version = '1.1.0'
       setWith( { release_version: version } )
 
-      const path = join( TMP_PATH, v4() )
-      await mkdirp( path )
+      const path = await mkdtemp( join( TMP_PATH, '/' ) )
       chdir( path )
 
       await simpleGit( path )

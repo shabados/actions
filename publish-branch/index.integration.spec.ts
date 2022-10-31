@@ -1,11 +1,12 @@
-import { join, resolve } from 'path'
-import { chdir } from 'process'
+import { existsSync } from 'node:fs'
+import { mkdir, mkdtemp } from 'node:fs/promises'
+import { join } from 'node:path'
+import { chdir } from 'node:process'
 
-import { mkdirp, pathExists, writeJSON } from 'fs-extra'
 import simpleGit from 'simple-git'
-import { v4 } from 'uuid'
 
 import { setWith } from '../test/utils'
+import { writeJSON } from '../utils/fs'
 import run from '.'
 
 const TMP_PATH = join( __dirname, 'tmp' )
@@ -22,17 +23,17 @@ const runCase = (
   setWith( { fixed_branch: fixedBranch, release_version: version, prerelease_branch: 'beta' } )
 
   // Create repo in temporary path
-  const path = resolve( TMP_PATH, v4() )
+  const path = await mkdtemp( join( TMP_PATH, '/' ) )
 
   // "Local" repository
   const localPath = join( path, 'local' )
-  await mkdirp( localPath )
+  await mkdir( localPath )
   chdir( localPath )
   const localGit = simpleGit( localPath )
 
   // "Remote" repository, simulated on filesystem
   const remotePath = join( path, 'remote' )
-  await mkdirp( remotePath )
+  await mkdir( remotePath )
   const remoteGit = simpleGit( remotePath )
 
   // Initialise repository with package.json
@@ -56,7 +57,7 @@ const runCase = (
   // Release branch should exist on remote
   await remoteGit.checkout( expectedBranch )
   // Expect artifact to be present on pushed origin
-  expect( await pathExists( join( remotePath, 'output.json' ) ) ).toBeTruthy()
+  expect( existsSync( join( remotePath, 'output.json' ) ) ).toBeTruthy()
 }
 
 jest.setTimeout( 1000 * 10 )

@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs'
-import { dirname, resolve } from 'path'
+import { readFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
 
 import { parse } from 'yaml'
 

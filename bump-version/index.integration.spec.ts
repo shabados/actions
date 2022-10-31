@@ -1,11 +1,11 @@
-import { join, resolve } from 'path'
-import { chdir } from 'process'
+import { mkdtemp, rm } from 'node:fs/promises'
+import { join } from 'node:path'
+import { chdir } from 'node:process'
 
-import { mkdirp, readJSON, remove, writeJSON } from 'fs-extra'
 import SimpleGit, { Options } from 'simple-git'
-import { v4 } from 'uuid'
 
 import { setWith } from '../test/utils'
+import { readJSON, writeJSON } from '../utils/fs'
 import run from '.'
 
 const TMP_PATH = join( __dirname, 'tmp' )
@@ -35,8 +35,7 @@ const runCase = ( {
   commits: CommitType[],
 ) => {
   // Create repo in temporary path
-  const path = resolve( TMP_PATH, v4() )
-  await mkdirp( path )
+  const path = await mkdtemp( join( `${TMP_PATH}`, '/' ) )
 
   // Set up git and action with path
   const git = SimpleGit( path )
@@ -76,7 +75,7 @@ type TestCase = [string, string, CommitType[]]
 jest.setTimeout( 10 * 1000 )
 afterAll( async () => {
   chdir( __dirname )
-  await remove( TMP_PATH )
+  await rm( TMP_PATH, { force: true, recursive: true } )
 } )
 
 describe( 'bump-version', () => {

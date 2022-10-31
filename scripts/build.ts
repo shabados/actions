@@ -1,5 +1,5 @@
-import { execSync } from 'child_process'
-import { readdirSync } from 'fs'
+import { execSync } from 'node:child_process'
+import { readdirSync } from 'node:fs'
 
 const actionDirectories = readdirSync( '.', { withFileTypes: true } )
   .filter( ( directory ) => directory.isDirectory() )

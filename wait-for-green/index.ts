@@ -1,4 +1,4 @@
-import { getInput, info, setFailed } from '@actions/core'
+import { error, getInput, info, setFailed } from '@actions/core'
 import { context, getOctokit } from '@actions/github'
 import { clearIntervalAsync, setIntervalAsync } from 'set-interval-async/dynamic'
 
@@ -7,7 +7,7 @@ const pollUntil = (
   interval: number,
 ) => new Promise<void>( ( resolve ) => {
   const timer = setIntervalAsync( async () => {
-    if ( !await condition() ) return
+    if ( !await condition().catch( error ) ) return
 
     await clearIntervalAsync( timer )
     resolve()

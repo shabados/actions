@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { existsSync } from 'node:fs'
+import { readFile } from 'node:fs/promises'
+
 import { getInput, info } from '@actions/core'
 import { context, getOctokit } from '@actions/github'
-import { pathExists, readFile } from 'fs-extra'
-import { prerelease } from 'semver'
 import conventionalChangelog from 'conventional-changelog'
 import angularChangelog from 'conventional-changelog-angular'
+import { prerelease } from 'semver'
 
 import { streamToString, tail } from '../utils'
 
@@ -22,7 +24,7 @@ const createRelease = async ( { octokit, version }: CreateRelease ) => {
 
   // Get release body, else generate changelog for latest release
   const bodyPath = getInput( 'body_path' )
-  const body = await pathExists( bodyPath )
+  const body = existsSync( bodyPath )
     ? await readFile( bodyPath, 'utf8' )
     : await generateChangelog()
 

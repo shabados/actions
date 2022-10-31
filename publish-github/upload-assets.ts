@@ -1,10 +1,9 @@
+import { readFile } from 'node:fs/promises'
+import { basename } from 'node:path'
 
-import { basename } from 'path'
-
+import { getMultilineInput, info } from '@actions/core'
 import { context, getOctokit } from '@actions/github'
 import * as glob from '@actions/glob'
-import { getMultilineInput, info } from '@actions/core'
-import { readFile } from 'fs-extra'
 
 type UploadAssets = {
   octokit: ReturnType<typeof getOctokit>,

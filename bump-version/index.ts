@@ -1,6 +1,7 @@
+import { execSync } from 'node:child_process'
+import { chdir, cwd } from 'node:process'
+
 import { debug, getBooleanInput, getInput, info, setFailed, setOutput } from '@actions/core'
-import { execSync } from 'child_process'
-import { chdir, cwd } from 'process'
 import { inc, minor, patch, prerelease, ReleaseType } from 'semver'
 import SimpleGit from 'simple-git'
 

@@ -1,9 +1,8 @@
+import { createWriteStream } from 'node:fs'
 
-import { createWriteStream } from 'fs'
-
-import angularChangelog from 'conventional-changelog-angular'
-import conventionalChangelog from 'conventional-changelog'
 import { info, setFailed } from '@actions/core'
+import conventionalChangelog from 'conventional-changelog'
+import angularChangelog from 'conventional-changelog-angular'
 import simpleGit from 'simple-git'
 
 import { streamToPromise } from '../utils'
