@@ -1,4 +1,22 @@
-# Unreleased (2022-04-03)
+# Unreleased (2022-10-31)
+
+
+
+# [2.1.0-next.0](https://github.com/shabados/actions/compare/v2.0.6-next.1...v2.1.0-next.0) (2022-10-31)
+
+
+### Features
+
+* bump actions to node16 ([371ecad](https://github.com/shabados/actions/commit/371ecadef7b592b8d47821a4e357f55e1bbf2ca0))
+* **wait-for-green:** return status is completed and mark failures ([ee253cc](https://github.com/shabados/actions/commit/ee253cc584a197ee3275a3c9847cef1d7c25d366))
+
+
+
+## [2.0.6-next.1](https://github.com/shabados/actions/compare/v2.0.6-next.0...v2.0.6-next.1) (2022-06-16)
+
+
+
+## [2.0.6-next.0](https://github.com/shabados/actions/compare/v2.0.5...v2.0.6-next.0) (2022-04-03)
 
 
 
