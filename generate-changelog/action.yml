@@ -3,5 +3,5 @@ name: Generate Conventional Changelog
 description: Generates a CHANGELOG.md based on the conventional commit standard.
 
 runs:
-  using: node12
+  using: node16
   main: dist/index.js
