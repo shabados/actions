@@ -28,7 +28,7 @@
     "conventional-recommended-bump": "^6.1.0",
     "semver": "^7.3.8",
     "set-interval-async": "^3.0.2",
-    "simple-git": "^3.14.1"
+    "simple-git": "^3.16.0"
   },
   "homepage": "https://github.com/shabados/actions#readme",
   "devDependencies": {
