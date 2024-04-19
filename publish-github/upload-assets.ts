@@ -23,7 +23,7 @@ const uploadAssets = async ( { octokit, id }: UploadAssets ) => {
     return octokit.rest.repos.uploadReleaseAsset( {
       name: basename( path ),
       // Until octokit type definitions are updated in @actions/github
-      data: await readFile( path ) as any as string,
+      data: await readFile( path ) as unknown as string,
       owner,
       repo,
       // eslint-disable-next-line @typescript-eslint/naming-convention

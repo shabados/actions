@@ -3,7 +3,7 @@ declare module 'conventional-changelog-angular' {
 
   type ConventionalChangelogOptions = {
     writerOpts: Parameters<typeof conventionalChangelog>[4] & {
-      transform: ( commit: any, context: any ) => any,
+      transform: ( commit: unknown, context: unknown ) => unknown,
     },
   }
 
