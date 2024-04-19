@@ -62,7 +62,7 @@ const run = async () => {
   info( `${reason} ${isPrerelease ? `and is a ${prereleaseId} prerelease` : ''}` )
 
   // Get current version from git tag. In case of a tiebreaker, sort by semver.
-  const [ current = '0.0.0' ] = ( await SimpleGit().tag( [ '--sort=-v:refname', '--sort=-creatordate' ] ) )
+  const [ current = '0.0.0' ] = ( await SimpleGit().tag( [ '--sort=-v:refname' ] ) )
     .split( '\n' )
     .filter( ( version ) => version )
 
