@@ -7,7 +7,8 @@ declare module 'conventional-changelog-angular' {
     },
   }
 
-  const options: Promise<ConventionalChangelogOptions>
+  type CreatePreset = () => Promise<ConventionalChangelogOptions>
+  const createPreset: CreatePreset
 
-  export default options
+  export default createPreset
 }

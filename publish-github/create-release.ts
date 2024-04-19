@@ -11,7 +11,7 @@ import { prerelease } from 'semver'
 import { streamToString, tail } from '../utils'
 
 const generateChangelog = async () => streamToString(
-  conventionalChangelog( { config: await angularChangelog } ),
+  conventionalChangelog( { config: await angularChangelog() } ),
 ).then( tail )
 
 type CreateRelease = {
