@@ -48,6 +48,7 @@ jobs:
           path: ${{ github.workspace }}
       - uses: actions/setup-node@v4
         with:
+          node-version-file: .node-version
           cache: npm
       - run: npm ci --force
       - run: npm run build
