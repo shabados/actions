@@ -14,7 +14,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v4
       with:
         registry-url: 'https://registry.npmjs.org'
 
@@ -23,7 +23,7 @@ runs:
       env:
         NODE_AUTH_TOKEN: ${{ inputs.npm_token || env.npm_token }}
 
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v4
       with:
         registry-url: 'https://npm.pkg.github.com'
         scope: '@${{ github.repository_owner }}'
