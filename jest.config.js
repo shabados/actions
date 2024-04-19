@@ -3,6 +3,7 @@ module.exports = {
     '^.+\\.(t|j)sx?$': [ '@swc/jest' ],
   },
   setupFiles: [
+    '<rootDir>/test/polyfills.js',
     '<rootDir>/test/setup.ts',
   ],
   watchPathIgnorePatterns: [
