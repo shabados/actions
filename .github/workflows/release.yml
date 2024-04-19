@@ -33,6 +33,7 @@ jobs:
       - name: Upload workspace
         uses: actions/upload-artifact@v4
         with:
+          overwrite: true
           name: release-workspace
           path: ${{ github.workspace }}
 
@@ -54,6 +55,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: release-workspace
+          overwrite: true
           path: |
             ${{ github.workspace }}
             !node_modules
