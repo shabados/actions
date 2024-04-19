@@ -15,7 +15,7 @@ const generateChangelog = async () => {
   const changelogStream = conventionalChangelog( {
     releaseCount: 0,
     outputUnreleased: true,
-    config: await angularChangelog,
+    config: await angularChangelog(),
   } )
 
   return streamToPromise( changelogStream.pipe( writeStream ) )
