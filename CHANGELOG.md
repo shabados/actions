@@ -1,4 +1,72 @@
-# Unreleased (2022-04-03)
+# Unreleased (2024-04-19)
+
+
+
+# [3.0.0](https://github.com/shabados/actions/compare/v3.0.0-next.1...v3.0.0) (2024-04-19)
+
+
+
+# [3.0.0-next.1](https://github.com/shabados/actions/compare/v3.0.0-next.0...v3.0.0-next.1) (2024-04-19)
+
+
+### Features
+
+* **bump-version:** allow same package.json version ([3b27a98](https://github.com/shabados/actions/commit/3b27a98a8ecfe0bf9686429b6b0793bac6182d12))
+
+
+
+# [3.0.0-next.0](https://github.com/shabados/actions/compare/v2.1.0-next.4...v3.0.0-next.0) (2024-04-19)
+
+
+### Build System
+
+* bump to v3 ([83a9522](https://github.com/shabados/actions/commit/83a95228fdf7be106074754dc89e110557885dbd))
+
+
+### BREAKING CHANGES
+
+* change parameter names in bump-version
+
+
+
+# [2.1.0-next.4](https://github.com/shabados/actions/compare/v2.1.0-next.3...v2.1.0-next.4) (2024-04-19)
+
+
+### Bug Fixes
+
+* **bump-version:** sort by refname only ([1add41d](https://github.com/shabados/actions/commit/1add41d077e3b074684fccbc6db5b06e9333f579))
+* **generate-changelog:** load angular changelog config correctly ([a3093d8](https://github.com/shabados/actions/commit/a3093d89a9beb750f0905d749c09eb0ad95f79e6))
+
+
+### Features
+
+* **bump-version:** rename prerelease_branch to prelease_id ([20f095a](https://github.com/shabados/actions/commit/20f095aba984ed3f8c9a282d0a7e709f7accaf60))
+
+
+
+# [2.1.0-next.3](https://github.com/shabados/actions/compare/v2.1.0-next.2...v2.1.0-next.3) (2024-04-18)
+
+
+
+# [2.1.0-next.1](https://github.com/shabados/actions/compare/v2.1.0-next.0...v2.1.0-next.1) (2022-10-31)
+
+
+
+# [2.1.0-next.0](https://github.com/shabados/actions/compare/v2.0.6-next.1...v2.1.0-next.0) (2022-10-31)
+
+
+### Features
+
+* bump actions to node16 ([371ecad](https://github.com/shabados/actions/commit/371ecadef7b592b8d47821a4e357f55e1bbf2ca0))
+* **wait-for-green:** return status is completed and mark failures ([ee253cc](https://github.com/shabados/actions/commit/ee253cc584a197ee3275a3c9847cef1d7c25d366))
+
+
+
+## [2.0.6-next.1](https://github.com/shabados/actions/compare/v2.0.6-next.0...v2.0.6-next.1) (2022-06-16)
+
+
+
+## [2.0.6-next.0](https://github.com/shabados/actions/compare/v2.0.5...v2.0.6-next.0) (2022-04-03)
 
 
 
