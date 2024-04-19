@@ -75,7 +75,7 @@ const run = async () => {
     // Run npm version [version] with custom commit message
     info( `Bumping ${current} to ${version}` )
     execSync(
-      `npm version ${version} -m "build: bump to v${version}"`,
+      `npm version ${version} -m "build: bump to v${version}" --allow-same-version`,
       { stdio: 'inherit' },
     )
   }
