@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: npm
-      - run: npm ci
+      - run: npm ci --force
       - run: npm run lint
 
   test:
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: npm
-      - run: npm ci
+      - run: npm ci --force
       - run: npm run test
 
   build:
@@ -40,5 +40,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: npm
-      - run: npm ci
+      - run: npm ci --force
       - run: npm run build
