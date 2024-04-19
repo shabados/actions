@@ -54,7 +54,7 @@ const run = async () => {
   debug( `Path is now ${cwd()}` )
 
   // Name of prerelease id
-  const prereleaseId = getInput( 'prerelease_branch' )
+  const prereleaseId = getInput( 'prerelease_id' )
   const isPrerelease = getBooleanInput( 'prerelease' )
 
   // Get bump based on commit history since last release

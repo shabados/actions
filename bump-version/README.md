@@ -14,7 +14,7 @@ See the test cases to understand the bump rules, which follow SemVer, but bump f
 
 **Required** The path inside the repository containing the target package.json to update. Default `"./"`.
 
-### `prerelease_branch`
+### `prerelease_id`
 
 If prerelease bump is required, the name of the prerelease id. Default `next`.
 
@@ -42,5 +42,5 @@ Whether the version has changed since the previous.
 uses: shabados/actions/bump-version@release
 with:
   prerelease: true
-  prerelease_branch: 'next'
+  prerelease_id: 'next'
 ```

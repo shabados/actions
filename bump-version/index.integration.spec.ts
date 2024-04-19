@@ -8,7 +8,7 @@ import { setWith } from '../test/utils'
 import { readJSON, writeJSON } from '../utils/fs'
 import run from '.'
 
-const TMP_PATH = join( __dirname, 'tmp' )
+const TMP_PATH = join( __dirname, 'tmp', '/' )
 
 enum CommitType {
   feat = 'feat',
@@ -27,7 +27,7 @@ const commitMessages = {
  * Creates a fresh repo and applies the commits.
  */
 const runCase = ( {
-  prereleaseBranch = '',
+  prereleaseId = '',
   hasInitialTag = true,
 } = {} ) => async (
   from: string,
@@ -35,11 +35,11 @@ const runCase = ( {
   commits: CommitType[],
 ) => {
   // Create repo in temporary path
-  const path = await mkdtemp( join( `${TMP_PATH}`, '/' ) )
+  const path = await mkdtemp( TMP_PATH )
 
   // Set up git and action with path
   const git = SimpleGit( path )
-  setWith( { path, prerelease: !!prereleaseBranch, prerelease_branch: prereleaseBranch } )
+  setWith( { path, prerelease: !!prereleaseId, prerelease_id: prereleaseId } )
 
   // Initialise repository with package.json
   const packagePath = join( path, 'package.json' )
@@ -118,9 +118,9 @@ describe( 'bump-version', () => {
       [ '1.1.1', '2.0.0-next.0', [ CommitType.breaking ] ],
     ]
 
-    it.each( cases )( 'should bump %s to %s, given a %p in commit history', runCase( { prereleaseBranch: 'next' } ) )
+    it.each( cases )( 'should bump %s to %s, given a %p in commit history', runCase( { prereleaseId: 'next' } ) )
 
-    it( 'should bump with any prerelease prefix, given a commit history', () => runCase( { prereleaseBranch: 'beta' } )( '1.0.0', '1.0.1-beta.0', [ CommitType.fix ] ) )
+    it( 'should bump with any prerelease prefix, given a commit history', () => runCase( { prereleaseId: 'beta' } )( '1.0.0', '1.0.1-beta.0', [ CommitType.fix ] ) )
   } )
 
   describe( 'from next release -> next release', () => {
@@ -135,7 +135,7 @@ describe( 'bump-version', () => {
       [ '2.0.0-next.0', '2.0.0-next.1', [ CommitType.fix ] ],
     ]
 
-    it.each( cases )( 'should bump %s to %s, given a %p in commit history', runCase( { prereleaseBranch: 'next' } ) )
+    it.each( cases )( 'should bump %s to %s, given a %p in commit history', runCase( { prereleaseId: 'next' } ) )
   } )
 
   describe( 'from no release -> next release', () => {
@@ -146,6 +146,6 @@ describe( 'bump-version', () => {
       [ '1.0.0-next.0', [ CommitType.breaking ], 'next' ],
     ]
 
-    it.each( cases )( 'should bump to %s, given a %p in commit history and no existing version git tag', ( to, commits, prereleaseBranch = '' ) => runCase( { prereleaseBranch, hasInitialTag: false } )( '0.0.1', to, commits ) )
+    it.each( cases )( 'should bump to %s, given a %p in commit history and no existing version git tag', ( to, commits, prereleaseId = '' ) => runCase( { prereleaseId, hasInitialTag: false } )( '0.0.1', to, commits ) )
   } )
 } )
