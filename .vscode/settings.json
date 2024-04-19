@@ -17,30 +17,5 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "markdownlint.config": {
-    "default": true,
-    "heading-increment": true,
-    "heading-style": { "style": "atx" },
-    "no-missing-space-atx": true,
-    "no-multiple-space-atx": true,
-    "heading-start-left": true,
-    "no-emphasis-as-heading": false,
-    "hr-style": { "style": "---" },
-    "ul-style": { "style": "dash" },
-    "list-indent": true,
-    "blanks-around-lists": true,
-    "fenced-code-language": true,
-    "code-block-style": { "style": "fenced" },
-    "code-fence-style": { "style": "backtick" },
-    "no-space-in-code": true,
-    "no-multiple-space-blockquote": true,
-    "no-space-in-emphasis": true,
-    "no-reversed-links": true,
-    "no-space-in-links": true,
-    "no-empty-links": true,
-    "no-inline-html": {
-      "allowed_elements": ["a", "code", "image", "img"]
-    },
-    "single-trailing-newline": true
-  }
+  "jest.enable": false
 }
