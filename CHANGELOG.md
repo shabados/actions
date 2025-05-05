@@ -1,4 +1,21 @@
-# Unreleased (2024-04-19)
+# Unreleased (2025-05-05)
+
+
+
+# [3.0.0-next.4](https://github.com/shabados/actions/compare/v3.0.0-next.3...v3.0.0-next.4) (2025-05-05)
+
+
+### Bug Fixes
+
+* **publish-github:** generate changelog if body path is not specified ([a7a6d80](https://github.com/shabados/actions/commit/a7a6d8060a4b17796d0ab489e641c05cd1ac0dd0))
+
+
+
+# [3.0.0-next.3](https://github.com/shabados/actions/compare/v3.0.0-next.2...v3.0.0-next.3) (2024-04-19)
+
+
+
+# [3.0.0-next.2](https://github.com/shabados/actions/compare/v3.0.0...v3.0.0-next.2) (2024-04-19)
 
 
 
