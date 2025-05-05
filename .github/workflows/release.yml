@@ -58,6 +58,7 @@ jobs:
         with:
           name: release-workspace
           overwrite: true
+          include-hidden-files: true
           path: |
             ${{ github.workspace }}
             !node_modules
