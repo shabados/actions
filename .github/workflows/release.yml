@@ -36,6 +36,7 @@ jobs:
           overwrite: true
           name: release-workspace
           path: ${{ github.workspace }}
+          include-hidden-files: true
 
   build:
     runs-on: ubuntu-latest
