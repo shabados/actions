@@ -2,7 +2,7 @@
 
 
 
-# [3.0.0](https://github.com/shabados/actions/compare/v3.0.0-next.4...v3.0.0) (2025-05-05)
+# [3.0.0-next.5](https://github.com/shabados/actions/compare/v3.0.0-next.4...v3.0.0-next.5) (2025-05-05)
 
 
 
@@ -19,7 +19,11 @@
 
 
 
-# [3.0.0-next.2](https://github.com/shabados/actions/compare/v3.0.0-next.1...v3.0.0-next.2) (2024-04-19)
+# [3.0.0-next.2](https://github.com/shabados/actions/compare/v3.0.0...v3.0.0-next.2) (2024-04-19)
+
+
+
+# [3.0.0](https://github.com/shabados/actions/compare/v3.0.0-next.1...v3.0.0) (2024-04-19)
 
 
 
