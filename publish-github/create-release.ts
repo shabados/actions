@@ -24,7 +24,7 @@ const createRelease = async ( { octokit, version }: CreateRelease ) => {
 
   // Get release body, else generate changelog for latest release
   const bodyPath = getInput( 'body_path' )
-  const body = existsSync( bodyPath )
+  const body = bodyPath && existsSync( bodyPath )
     ? await readFile( bodyPath, 'utf8' )
     : await generateChangelog()
 
